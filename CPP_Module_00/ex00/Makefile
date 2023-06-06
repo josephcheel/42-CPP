@@ -1,4 +1,4 @@
-NAME = Megaphone
+NAME = megaphone
 
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 RM		= rm -f
@@ -14,7 +14,7 @@ DEPS	= $(basename $(OBJS))
 
 %.o: %.c Makefile
 	@echo "	Compiling: $<"
-	@$(CC) - $@ -MMD $(CPPFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) $@ -c $< -o $@
 
 all: ${NAME}
 
@@ -23,7 +23,7 @@ ${NAME}: $(OBJS)
 	@echo "Megaphone compiled."
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(NAME)
 
 fclean: clean
 	@${RM} ${NAME}

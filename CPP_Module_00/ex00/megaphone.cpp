@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+
 using namespace std;
 
 int main(int ac, char **av)
 {
 	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	for (int arg = 1; arg < ac; arg++)
 	{
 		string str = av[arg];
