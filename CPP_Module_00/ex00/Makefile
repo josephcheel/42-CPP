@@ -1,33 +1,43 @@
 NAME = megaphone
 
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-RM		= rm -f
+AR		= ar -rcs
+RM		= rm -fr
 MD		= mkdir -p
 CP		= cp -f
 CC		= c++
+DEPFLAGS			= -MMD -MP
 
 MEGAPHONE_SRC	=	megaphone.cpp \
 
+SRCS_DIR = 
+OBJS_DIR = obj/
+
 SRCS	+= $(MEGAPHONE_SRC)
-OBJS	= $(SRCS:.c=.o)
-DEPS	= $(basename $(OBJS))
+OBJS	= ${addprefix ${OBJS_DIR}, ${SRCS:.cpp=.o}}
+DEPS	= ${addprefix ${OBJS_DIR}, ${SRCS:.cpp=.d}}
 
-%.o: %.c Makefile
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp Makefile
+	@$(MD) $(dir $@)
 	@echo "	Compiling: $<"
-	@$(CC) $(CPPFLAGS) $@ -c $< -o $@
+	@$(CC) -c $(CPPFLAGS) $(DEPFLAGS) $(INCLUDE) $< -o $@ 
+#$@ -c
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: $(OBJS)
-	@$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS)
+	@$(CC) $(CPPFLAGS) $(INCLUDE) -o $@ $^ $(LIBS)
 	@echo "Megaphone compiled."
 
 clean:
-	@$(RM) $(NAME)
+	@$(RM) $(OBJS_DIR)
 
 fclean: clean
-	@${RM} ${NAME}
+	@$(RM) $(NAME)
 
 re: fclean all
+
+-include ${DEPS}
 
 .PHONY: all clean fclean re 
