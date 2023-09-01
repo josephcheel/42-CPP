@@ -1,6 +1,8 @@
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
+#include <sstream>
+#include <iomanip>
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -37,10 +39,17 @@ Account::~Account( void )
 
 void	Account::_displayTimestamp( void )
 {
-	std::time_t current_time;
+	char formattedTime[16]; 
+ 	std::time_t currentTime = std::time(nullptr);
+    std::tm* localTime = std::localtime(&currentTime);
 
-	std::time(&current_time);
-	std::cout << "[" << current_time << "] ";
+    std::strftime(formattedTime, sizeof(formattedTime), "%Y%m%d_%H%M%S", localTime);
+	std::cout << "[" << formattedTime << "] ";
+
+// 	std::time_t current_time;
+
+// 	std::time(&current_time);
+// 	std::cout << "[" << current_time << "] ";
 }
 
 int	Account::getNbAccounts( void )

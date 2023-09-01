@@ -1,36 +1,39 @@
-NAME = megaphone
+NAME = test_account
 
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-AR		= ar -rcs
-RM		= rm -fr
-MD		= mkdir -p
-CP		= cp -f
-CC		= c++
-DEPFLAGS			= -MMD -MP
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+DEPFLAGS	= -MMD -MP
+RM			= rm -f
+MD			= mkdir -p
+CP			= cp -f
+CC			= c++
 
-MEGAPHONE_SRC	=	megaphone.cpp \
-
-SRCS_DIR = 
-OBJS_DIR = obj/
-
-SRCS	+= $(MEGAPHONE_SRC)
-OBJS	= ${addprefix ${OBJS_DIR}, ${SRCS:.cpp=.o}}
-DEPS	= ${addprefix ${OBJS_DIR}, ${SRCS:.cpp=.d}}
+ACCOUNT_SRC	=	tests.cpp Account.cpp \
 
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp Makefile
+SRC_DIR = src/
+OBJ_DIR = obj/
+INC_DIR = inc/
+
+INCLUDE += -I $(INC_DIR)
+
+SRCS	+= $(addprefix $(SRC_DIR), $(ACCOUNT_SRC))
+OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
+DEPS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.d))
+# DEPS 
+
+$(OBJ_DIR)%.o: %.cpp Makefile
 	@$(MD) $(dir $@)
-	@$(CC) -c $(CPPFLAGS) $(DEPFLAGS) $(INCLUDE) $< -o $@ 
+	@$(CC) -c $(CPPFLAGS) $(DEPFLAGS) $(INCLUDE) $< -o $@
 	@echo "$(WARN_COLOR)Compiling: $<$(NO_COLOR)"
 
-all: $(NAME)
+all: ${NAME}
 
-$(NAME): $(OBJS)
-	@$(CC) $(CPPFLAGS) $(INCLUDE) -o $@ $^ $(LIBS)
+${NAME}: $(OBJS)
+	@$(CC) $(CFLAGS) $(INCLUDE) -o $@ $^ $(LIBS)
 	@echo "$(OK_COLOR)$(NAME) compiled!$(NO_COLOR)"
 
 clean:
-	@$(RM) $(OBJS_DIR)
+	@$(RM) -r $(OBJ_DIR)
 	@echo "$(ERROR_COLOR)Dependencies and objects removed$(NO_COLOR)"
 
 fclean: clean
@@ -39,10 +42,9 @@ fclean: clean
 
 re: fclean all
 
--include ${DEPS}
-
 .PHONY: all clean fclean re 
 
+-include $(DEPS)
 #●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●#
 #•❅──────✧❅✦❅✧──────❅••❅──────✧❅✦❅✧─COLOR──✧❅✦❅✧──────❅••❅──────✧❅✦❅✧──────❅•#
 #●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●#
