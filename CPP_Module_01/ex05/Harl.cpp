@@ -34,6 +34,23 @@ void Harl::complain(std::string level)
 			break ;
 		}
 	}
+	// int i = -1;
+
+	// while (++i < 4)
+	// {
+	// 	switch(i)
+	// 	{
+	// 		case 1: 
+	// 			this->debug();
+	// 		case 2:
+	// 			this->info();
+	// 		case 3:
+	// 			this->warning();
+	// 		case 4: 
+	// 			this->error();
+	// 	}
+	// }
+ 
 }
 
 void Harl::debug( void )
