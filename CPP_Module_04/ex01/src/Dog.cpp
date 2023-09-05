@@ -1,11 +1,13 @@
-#include "Dog.hpp"
+#include "../inc/Dog.hpp"
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog() : Animal("Dog"), DogBrain(new Brain())
 {
 	std::cout << "Dog Default constructor called" << std::endl;
 }
+
 Dog::Dog::~Dog()
 {
+	delete DogBrain;
 	std::cout << "Dog desctructor called" << std::endl;
 }
 

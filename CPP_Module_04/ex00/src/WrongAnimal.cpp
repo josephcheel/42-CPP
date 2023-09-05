@@ -1,4 +1,4 @@
-#include "WrongAnimal.hpp"
+#include "../inc/WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal( void ) : type("NoWrongAnimal")
 {

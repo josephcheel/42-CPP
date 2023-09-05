@@ -2,6 +2,7 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 # include <iostream>
 
 class Cat: public Animal {
@@ -14,6 +15,8 @@ public:
 	Cat &operator=(Cat const &copy);
 	
 	void	makeSound(void) const;
+private:
+	Brain *CatBrain;
 };
 
 #endif

@@ -1,11 +1,13 @@
-#include "Cat.hpp"
+#include "../inc/Cat.hpp"
+#include "../inc/Brain.hpp"
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat() : Animal("Cat"), CatBrain(new Brain())
 {
 	std::cout << "Cat Default constructor called" << std::endl;
 }
 Cat::Cat::~Cat()
 {
+	delete CatBrain;
 	std::cout << "Cat desctructor called" << std::endl;
 }
 

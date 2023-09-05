@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "../inc/Animal.hpp"
 
 Animal::Animal() : type("NoAnimal")
 {
