@@ -1,12 +1,12 @@
-#include "Zombie.hpp"
+#include "../inc/Zombie.hpp"
 
 int main(void) 
 {
 	//Zombie created in the Stack
-	randomChump("Joseph");
+	randomChump("ZombieStack");
 	
 	//Zombie created in the Heap
-	Zombie *Zombie_Heap = newZombie("Pau");
+	Zombie *Zombie_Heap = newZombie("ZombieHeap");
 	Zombie_Heap->announce();
 
 	// Heap must be deleted, Stack is automatically descontrusted in the return

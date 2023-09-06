@@ -1,19 +1,15 @@
-#include "Zombie.hpp"
+#include "../inc/Zombie.hpp"
 
 Zombie::Zombie(std::string name) : name(name)
 {
-	return ;
+	std::cout << "Default Zombie constructor called" << std::endl;
 }
 Zombie::~Zombie(void)
 {
-	std::cout << this->name << std::endl;
-	return ;
+	std::cout << "Zombie destructor called" << std::endl;
 }
 
 void	Zombie::announce(void)
 {
 	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	return ;
 }
-
-

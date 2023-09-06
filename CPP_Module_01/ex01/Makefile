@@ -1,36 +1,40 @@
-NAME = a.out
+NAME = ZombieHorde
 
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-AR		= ar -rcs
-RM		= rm -fr
-MD		= mkdir -p
-CP		= cp -f
-CC		= c++
-DEPFLAGS			= -MMD -MP
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 
+DEPFLAGS	= -MMD -MP
+DEBFLAGS	= -fsanitize=address -pedantic -pedantic-errors  
+RM			= rm -f
+MD			= mkdir -p
+CP			= cp -f
+CC			= c++
 
-MAIN_SRC	=	main.cpp \
-
-SRCS_DIR = 
-OBJS_DIR = obj/
-
-SRCS	+= $(MAIN_SRC)
-OBJS	= ${addprefix ${OBJS_DIR}, ${SRCS:.cpp=.o}}
-DEPS	= ${addprefix ${OBJS_DIR}, ${SRCS:.cpp=.d}}
+ZOMBIE_SRC	=	main.cpp Zombie.cpp zombieHorde.cpp\
 
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp Makefile
+SRC_DIR = src/
+OBJ_DIR = obj/
+INC_DIR = inc/
+
+INCLUDE += -I $(INC_DIR)
+
+SRCS	+= $(addprefix $(SRC_DIR), $(ZOMBIE_SRC))
+OBJS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
+DEPS	=	$(addprefix $(OBJ_DIR), $(SRCS:.cpp=.d))
+
+
+$(OBJ_DIR)%.o: %.cpp Makefile
 	@$(MD) $(dir $@)
-	@$(CC) -c $(CPPFLAGS) $(DEPFLAGS) $(INCLUDE) $< -o $@ 
+	@$(CC) -c $(CPPFLAGS) $(DEPFLAGS) $(INCLUDE) $< -o $@
 	@echo "$(WARN_COLOR)Compiling: $<$(NO_COLOR)"
 
-all: $(NAME)
+all: ${NAME}
 
-$(NAME): $(OBJS)
-	@$(CC) $(CPPFLAGS) $(INCLUDE) -o $@ $^ $(LIBS)
+${NAME}: $(OBJS)
+	@$(CC) $(CFLAGS) $(DEBFLAGS) $(INCLUDE) -o $@ $^ $(LIBS)
 	@echo "$(OK_COLOR)$(NAME) compiled!$(NO_COLOR)"
 
 clean:
-	@$(RM) $(OBJS_DIR)
+	@$(RM) -r $(OBJ_DIR)
 	@echo "$(ERROR_COLOR)Dependencies and objects removed$(NO_COLOR)"
 
 fclean: clean
@@ -39,10 +43,9 @@ fclean: clean
 
 re: fclean all
 
--include ${DEPS}
-
 .PHONY: all clean fclean re 
 
+-include $(DEPS)
 #●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●#
 #•❅──────✧❅✦❅✧──────❅••❅──────✧❅✦❅✧─COLOR──✧❅✦❅✧──────❅••❅──────✧❅✦❅✧──────❅•#
 #●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●●○●○●○●○●○●○●○●○●○●#
