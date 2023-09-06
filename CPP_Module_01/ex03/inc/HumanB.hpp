@@ -1,5 +1,5 @@
-#ifndef HUMAN_B_H
-# define HUMAN_B_H
+#ifndef HUMAN_B_HPP
+# define HUMAN_B_HPP
 # include <iostream>
 # include "Weapon.hpp"
 

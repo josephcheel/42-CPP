@@ -1,20 +1,18 @@
-#include "HumanB.hpp"
-#include "Weapon.hpp"
+#include "../inc/HumanB.hpp"
 
-HumanB::HumanB(std::string name) : name(name), Weapon(nullptr)
+HumanB::HumanB(std::string name) : Weapon(nullptr), name(name)
 {
-	return ;
+	std::cout << "Default HumanB constructor called" << std::endl;
 }
 
 HumanB::~HumanB()
 {
-	return ;
+	std::cout << "HumanB destructor called" << std::endl;
 }
 
 void HumanB::setWeapon(class Weapon &Weapon)
 {
 	this->Weapon = &Weapon;
-	return ;
 }
 
 void HumanB::attack(void)
