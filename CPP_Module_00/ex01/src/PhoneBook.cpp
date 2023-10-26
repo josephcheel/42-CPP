@@ -3,10 +3,10 @@
 #include "../inc/Contact.class.hpp"
 #include "../inc/PhoneBook.class.hpp"
 
-// using namespace std;
-
 PhoneBook::PhoneBook(void)
 {
+	
+	this->nbr_contacts = 0;
 	return ;
 }
 
@@ -23,8 +23,6 @@ void	PhoneBook::add_contact()
 	std::string phone;
 	std::string secret;
 
-	if (!this->nbr_contacts)
-		this->nbr_contacts = 0;
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits < std::streamsize>::max(), '\n');
 	std::cout << "Enter First Name" << std::endl;
@@ -52,7 +50,6 @@ void	PhoneBook::display_contact(void)
 {
 	int selected;
 
-
 	std::cout << "Select Contact Index" << std::endl;
 	std::cin >> selected;
 	std::cin.clear();
@@ -67,6 +64,8 @@ void	PhoneBook::display_contact(void)
 		std::cout << "Darkest Secret: " << this->contacts[selected - 1].darkest_secret << std::endl;
 		std::cout << std::setw(10) << "--------------------------------" << std::endl;
 	}
+	else
+		std::cout << "¡No contact match for index [" << selected << "]!" << std::endl << std::endl;
 }
 
 std::string	resize_string(std::string str)
@@ -78,6 +77,8 @@ std::string	resize_string(std::string str)
 
 void	PhoneBook::search_contact(void)
 {
+	// if (!this->nbr_contacts)
+	// 	this->nbr_contacts = 0;
 	std::cout << "|";
 	std::cout << std::setw(10) << resize_string("Index");
 	std::cout << "|";
