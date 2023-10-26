@@ -1,5 +1,6 @@
-#include "ClapTrap.hpp"
-#include "DiamondTrap.hpp"
+#include "../inc/ClapTrap.hpp"
+#include "../inc/ScavTrap.hpp"
+#include "../inc/DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(std::string const &name) : ClapTrap(name + "_clap_name")
 {

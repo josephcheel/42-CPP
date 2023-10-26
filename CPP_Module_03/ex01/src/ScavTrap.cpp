@@ -13,7 +13,7 @@ ScavTrap::ScavTrap(std::string name)
 	_HitPoints = 100;
 	_EnergyPoints = 50;
 	_AttackDamage = 20;
-	std::cout << "ScapTrap default construtor called" << std::endl;
+	std::cout << "ScavTrap default construtor called" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -23,7 +23,7 @@ ScavTrap::~ScavTrap()
 
 ScavTrap::ScavTrap(ScavTrap const & copy)
 {
-	std::cout << " ScapTrap Copy constructor called" << std::endl;
+	std::cout << "ScavTrap destructor called" << std::endl;
 	*this = (ScavTrap &)copy;
 }
 

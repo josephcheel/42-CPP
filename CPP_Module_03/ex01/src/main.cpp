@@ -9,7 +9,8 @@ int main(void)
 	Joseph.attack("Enemy");
 	Enemy.takeDamage(2);
 	Enemy.beRepaired(2);
-
+	Enemy.beRepaired(2);
+	Enemy.guardGate();
 	// Enemy.attack("Joseph");
 	// Joseph.takeDamage(10);
 	// Joseph.beRepaired(2);

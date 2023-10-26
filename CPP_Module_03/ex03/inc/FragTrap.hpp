@@ -15,5 +15,4 @@ class FragTrap : virtual public ClapTrap {
 		FragTrap(void);
 };
 
-
 #endif

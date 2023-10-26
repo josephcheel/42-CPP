@@ -1,10 +1,12 @@
-#include "FragTrap.hpp"
+#include "../inc/DiamondTrap.hpp"
+
 
 int main(void)
 {
-	FragTrap Joseph("Joseph");
-	FragTrap Enemy("Enemy");
+	DiamondTrap Joseph("Joseph");
+	DiamondTrap Enemy("Enemy");
 
+	Joseph.whoAmI();
 	Joseph.attack("Enemy");
 	Enemy.takeDamage(Joseph.getAttackDamage());
 	Enemy.beRepaired(2);

@@ -41,7 +41,7 @@ void	ClapTrap::attack(const std::string& target)
 		return ;
 	std::cout << "ClapTrap " << _name << " attacks " << target <<  " causing " << _AttackDamage << " points of damage!";
 	_EnergyPoints -= 1;
-	std::cout << " and Spent 1 energy point on Attack" << std::endl;
+	std::cout << " but Spent 1 energy point on Attack" << std::endl;
 }
 void	ClapTrap::takeDamage(unsigned int amount)
 {
@@ -49,7 +49,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		_HitPoints = 0;
 	else
 		_HitPoints -= amount;
-	std::cout << "ClapTrap " << _name << " was damaged by" << amount << ". Now is "<< _HitPoints << " of Health left" << std::endl;
+	std::cout << "ClapTrap " << _name << " was damaged by " << amount << ". Now has "<< _HitPoints << " of Health left" << std::endl;
 	return ;
 }
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -60,7 +60,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	_EnergyPoints -= 1;
 
 	std::cout << "ClapTrap " << _name <<  " Repaired +" << amount << " of Health. Now ";
-	std::cout << _name << " has " << _HitPoints << " points of health and" << " Spent 1 energy point on Repairing" << std::endl;
+	std::cout << _name << " has " << _HitPoints << " points of health but" << " Spent 1 energy point on Repairing" << std::endl;
 	
 }
 

@@ -1,6 +1,5 @@
-#include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
-
+#include "../inc/ScavTrap.hpp"
+#include "../inc/ClapTrap.hpp"
 
 ScavTrap::ScavTrap(void)
 {
@@ -23,7 +22,7 @@ ScavTrap::~ScavTrap()
 
 ScavTrap::ScavTrap(ScavTrap const & copy)
 {
-	std::cout << "ScapTrap destructor called" << std::endl;
+	std::cout << " ScapTrap Copy constructor called" << std::endl;
 	*this = (ScavTrap &)copy;
 }
 
