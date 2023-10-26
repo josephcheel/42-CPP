@@ -1,5 +1,5 @@
-#include "Point.hpp"
-#include "Fixed.hpp"
+#include "../inc/Fixed.hpp"
+#include "../inc/Point.hpp"
 
 Point::Point() : _x(0), _y(0)
 {

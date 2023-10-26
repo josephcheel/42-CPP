@@ -1,6 +1,6 @@
-#include "Point.hpp"
-#include "Fixed.hpp"
 #include <iostream>
+#include "../inc/Point.hpp"
+#include "../inc/Fixed.hpp"
 
 int main(void)
 {
@@ -10,7 +10,7 @@ int main(void)
 	const Point p(7, 2);
 
 	bool answer = bsp(a, b, c, p);
-	//std::cout << std::boolalpha << answer << std::endl; to see if its true or false
+	//std::cout << std::boolalpha << answer << std::endl; //to see if its true or false
 	std::cout  << answer << std::endl;
 	return (0);
 }

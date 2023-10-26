@@ -1,5 +1,5 @@
-#include "Fixed.hpp"
 #include <iostream>
+#include "../inc/Fixed.hpp"
 
 Fixed::Fixed() : _fixed_nbr(0)
 {

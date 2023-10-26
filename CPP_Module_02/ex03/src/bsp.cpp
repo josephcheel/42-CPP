@@ -1,5 +1,6 @@
 #include "Point.hpp"
-#include "Fixed.hpp"
+#include "../inc/Fixed.hpp"
+
 float ft_abs(float x)
 {
 	if (x >= 0)

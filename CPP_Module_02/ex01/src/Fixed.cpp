@@ -1,8 +1,5 @@
-#include "Fixed.hpp"
+#include "../inc/Fixed.hpp"
 #include <iostream>
-
-
-const int _nbr_fract_bits = 8;
 
 Fixed::Fixed() : _fixed_nbr(0)
 {

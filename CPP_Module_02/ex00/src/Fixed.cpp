@@ -1,4 +1,4 @@
-#include "Fixed.hpp"
+#include "../inc/Fixed.hpp"
 #include <iostream>
 
 	const int	Fixed::_nbr_fract_bits = 8;
