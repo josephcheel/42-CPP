@@ -3,13 +3,14 @@
 int main(void)
 {
 	Zombie *Horde;
-	
+	int N = 5; //nbr of the horde
+
 	//allocates 5 zombies with the seconda param as name
-	Horde = zombieHorde(5, "Hoooooordeeee"); 
+	Horde = zombieHorde(N, "Hoooooordeeee"); 
 	
 	//prints the names 
 	int i = 0;
-	while (i < 5)
+	while (i < N)
 	{
 		Horde[i].announce();
 		i++;

@@ -55,6 +55,7 @@ int main(int ac, char **av)
 		inFile.close();
 		return 1;
 	}
+	
 	// Loop to get line by line and replace <s1> for <s2>
 	while (std::getline(inFile, line))
 	{	

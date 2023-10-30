@@ -1,7 +1,7 @@
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
-#include "../inc/WrongAnimal.hpp"
-#include "../inc/WrongCat.hpp"
+// #include "../inc/WrongAnimal.hpp"
+// #include "../inc/WrongCat.hpp"
 #include "../inc/AbstractAnimal.hpp"
 
 int main() 
@@ -10,6 +10,7 @@ int main()
 	const AbstractAnimal* j = new Dog(); 
 	const AbstractAnimal* i = new Cat();
 
+	// const AbstractAnimal NoAnimal;
 
 	std::cout << j->getType() << std::endl;
 	std::cout << i->getType() << std::endl;

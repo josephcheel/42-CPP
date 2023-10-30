@@ -1,6 +1,5 @@
 #include "../inc/Cat.hpp"
 #include "../inc/Brain.hpp"
-#include "../inc/AbstractAnimal.hpp"
 
 Cat::Cat() : AbstractAnimal("Cat"), CatBrain(new Brain())
 {
@@ -12,7 +11,7 @@ Cat::Cat::~Cat()
 	std::cout << "Cat desctructor called" << std::endl;
 }
 
-Cat::Cat(Cat const &copy) : AbstractAnimal(copy.type)
+Cat::Cat(Cat const &copy) : AbstractAnimal(copy.type), CatBrain(new Brain())
 {
 	std::cout << "Cat copy constructor called" << std::endl;
 }
@@ -22,6 +21,7 @@ Cat &Cat::operator=(Cat const &copy)
 	if (this != &copy)
 	{
 		type = copy.type;
+		this->CatBrain = copy.CatBrain;
 	}
 	return (*this);
 }

@@ -2,7 +2,7 @@
 
 WrongCat::WrongCat( void ) : WrongAnimal("WrongCat")
 {
-	std::cout << "WrongCat empty Default constructor called" << std::endl;
+	std::cout << "WrongCat Default constructor called" << std::endl;
 }
 WrongCat::~WrongCat( void )
 {
@@ -11,7 +11,7 @@ WrongCat::~WrongCat( void )
 
 WrongCat::WrongCat( std::string _type ) : WrongAnimal(_type)
 {
-		std::cout << "WrongCat type Default constructor called" << std::endl;
+		std::cout << "WrongCat constructor called" << std::endl;
 }
 
 WrongCat::WrongCat( WrongCat const &copy ) : WrongAnimal(copy.type)

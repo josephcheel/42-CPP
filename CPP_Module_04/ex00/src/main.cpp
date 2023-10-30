@@ -19,6 +19,7 @@ int main()
 	std::cout << meta->getType() << " " << std::endl;
 
 	std::cout << std::endl;
+	
 	// Make sound member function for three classes
 	i->makeSound(); //will output the cat sound! 
 	j->makeSound();
@@ -31,6 +32,7 @@ int main()
 	delete i;
 
 	std::cout << std::endl << std::endl;
+
 	// Declaration of WrongAnimal and WrongCat
 	const WrongAnimal*	meta1 = new WrongAnimal();
 	const WrongAnimal*	i1 = new WrongCat();

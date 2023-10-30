@@ -1,4 +1,4 @@
-NAME = DiamondTrap
+NAME = AbstractAnimal
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow 
 DEPFLAGS	= -MMD -MP
@@ -8,7 +8,7 @@ MD			= mkdir -p
 CP			= cp -f
 CC			= c++
 
-SRC	=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp \
+SRC	=	main.cpp AbstractAnimal.cpp Cat.cpp Dog.cpp Brain.cpp #WrongAnimal.cpp WrongCat.cpp \
 
 
 SRC_DIR = src/

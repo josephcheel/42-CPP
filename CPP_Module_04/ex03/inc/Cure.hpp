@@ -5,13 +5,14 @@
 
 class	Cure : public AMateria  {
 
-    public:
-		~Cure();
+    public:	
+		Cure();
 		Cure(Cure &copy);
+		~Cure();
 
 		Cure &operator=(Cure &copy);
-		// virtual AMateria* clone() const = 0;
-		// virtual void use(ICharacter& target);
+		Cure* clone() const;
+		void use(ICharacter& target);
 };
 
 #endif

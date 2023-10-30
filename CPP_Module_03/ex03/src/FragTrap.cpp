@@ -1,13 +1,13 @@
-#include "FragTrap.hpp"
+#include "../inc/FragTrap.hpp"
 
 FragTrap::FragTrap()
 {
-	std::cout << " FragTrap Default constructor called" << std::endl;
+	std::cout << "FragTrap Default constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name)
 {
-	std::cout << " FragTrap constructor called" << std::endl;
+	std::cout << "FragTrap constructor called" << std::endl;
 	this->_name = name;
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 100;
@@ -16,7 +16,7 @@ FragTrap::FragTrap(std::string name)
 
 FragTrap::~FragTrap()
 {
-	std::cout << " ScapTrap destructor called" << std::endl;
+	std::cout << "FraTrap destructor called" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &copy)

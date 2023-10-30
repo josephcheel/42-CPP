@@ -4,6 +4,7 @@ Dog::Dog() : Animal("Dog")
 {
 	std::cout << "Dog Default constructor called" << std::endl;
 }
+
 Dog::Dog::~Dog()
 {
 	std::cout << "Dog desctructor called" << std::endl;

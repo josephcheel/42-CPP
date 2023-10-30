@@ -2,12 +2,12 @@
 
 Animal::Animal() : type("NoAnimal")
 {
-	std::cout << "Animal empty Default constructor called" << std::endl;
+	std::cout << "Animal Default constructor called" << std::endl;
 }
 
 Animal::Animal(std::string _type) : type(_type)
 {
-	std::cout << "Animal type Default constructor called" << std::endl;
+	std::cout << "Animal constructor called" << std::endl;
 }
 
 Animal::~Animal( void )

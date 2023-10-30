@@ -5,6 +5,11 @@ Ice::Ice() : _type("ice")
 	std::cout << "Ice Default constructor called" << std::endl;
 }
 
+Ice::Ice(Ice &copy) : _type("ice")
+{
+	std::cout << "Ice constructor called" << std::endl;
+}
+
 Ice::~Ice()
 {
 	std::cout << "Ice desctructor called" << std::endl;
@@ -18,7 +23,7 @@ Ice &Ice::operator=(Ice &copy)
 {
 	if (this != &copy)
 	{
-		_type = type 
+		_type = copy._type;
 	}
 	return (*this);
 }
@@ -28,7 +33,7 @@ Ice* Ice::clone() const
 	return (new Ice());
 }
 
-void Ice::use(ICharacter& target)
-{
-	std::cout << "* shoots an ice bolt at " << target << " *" << std::endl;
-}
+// void Ice::use(ICharacter& target)
+// {
+// 	std::cout << "* shoots an ice bolt at " << target << " *" << std::endl;
+// }

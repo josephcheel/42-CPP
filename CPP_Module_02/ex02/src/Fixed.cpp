@@ -138,17 +138,20 @@ Fixed	Fixed::operator++(int)
 	++_fixed_nbr;
 	return (temp);
 }
+
 Fixed	Fixed::operator++()
 {
 	++_fixed_nbr;
 	return (*this);
 }
+
 Fixed	Fixed::operator--(int)
 {
 	Fixed temp = *this;
 	--_fixed_nbr;
 	return (temp);
 }
+
 Fixed	Fixed::operator--()
 {
 	--this->_fixed_nbr;
@@ -162,6 +165,7 @@ Fixed Fixed::min(Fixed &f1, Fixed &f2)
 	else
 		return (f2);
 }
+
 Fixed const Fixed::min(Fixed const &f1, Fixed const &f2)
 {
 	if (f1._fixed_nbr < f2._fixed_nbr)
@@ -177,6 +181,7 @@ Fixed Fixed::max(Fixed &f1, Fixed &f2)
 	else
 		return (f2);
 }
+
 Fixed const Fixed::max(Fixed const &f1, Fixed const &f2)
 {
 	if (f1._fixed_nbr > f2._fixed_nbr)

@@ -2,7 +2,7 @@
 
 WrongAnimal::WrongAnimal( void ) : type("NoWrongAnimal")
 {
-	std::cout << "WrongAnimal empty Default constructor called" << std::endl;
+	std::cout << "WrongAnimal Default constructor called" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal( void )
@@ -12,7 +12,7 @@ WrongAnimal::~WrongAnimal( void )
 
 WrongAnimal::WrongAnimal( std::string _type ) : type(_type)
 {
-	std::cout << "WrongAnimal type Default constructor called" << std::endl;
+	std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal( WrongAnimal const &copy ) : type(copy.type)

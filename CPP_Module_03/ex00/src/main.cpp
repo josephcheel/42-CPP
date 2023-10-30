@@ -6,8 +6,9 @@ int main(void)
 	ClapTrap Enemy("Enemy");
 
 	Joseph.attack("Enemy");
-	Enemy.takeDamage(2);
-	Enemy.beRepaired(2);
+	Enemy.takeDamage(Joseph.getAttackDamage());
+	std::cout <<  Joseph.getName() << " has " << Joseph.getEnergyPoints() << " energy points left" << std::endl;
+	Enemy.beRepaired(20);
 
 	// Enemy.attack("Joseph");
 	// Joseph.takeDamage(10);

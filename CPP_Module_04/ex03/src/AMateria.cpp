@@ -1,9 +1,14 @@
 #include "../inc/AMateria.hpp"
 
 
-AMateria::AMateria(std::string const & type)
+AMateria::AMateria()
 {
 	std::cout << "AMateria Default constructor called" << std::endl;
+}
+
+AMateria::AMateria(std::string const & type)
+{
+	std::cout << "AMateria constructor called" << std::endl;
 }
 
 AMateria::~AMateria()
@@ -28,4 +33,9 @@ AMateria &AMateria::operator=(AMateria &copy)
 std::string const & AMateria::getType() const //Returns the materia type
 {
 	return (_type);
+}
+	
+void AMateria::use(ICharacter& target)
+{
+
 }

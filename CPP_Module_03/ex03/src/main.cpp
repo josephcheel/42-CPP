@@ -1,6 +1,5 @@
 #include "../inc/DiamondTrap.hpp"
 
-
 int main(void)
 {
 	DiamondTrap Joseph("Joseph");
@@ -8,7 +7,7 @@ int main(void)
 
 	Joseph.whoAmI();
 	Joseph.attack("Enemy");
-	Enemy.takeDamage(Joseph.getAttackDamage());
+	Enemy.takeDamage(10);
 	Enemy.beRepaired(2);
 
 	// Enemy.attack("Joseph");

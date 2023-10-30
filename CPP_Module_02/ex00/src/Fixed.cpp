@@ -33,5 +33,6 @@
 
 	void Fixed::setRawBits( int const raw )
 	{
+		std::cout << "setRawBits member function called" << std::endl;
 		this->_fixed_nbr = raw;
 	}

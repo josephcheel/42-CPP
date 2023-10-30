@@ -1,8 +1,8 @@
 #include "../inc/Animal.hpp"
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
-#include "../inc/WrongAnimal.hpp"
-#include "../inc/WrongCat.hpp"
+// #include "../inc/WrongAnimal.hpp"
+// #include "../inc/WrongCat.hpp"
 
 int main() 
 {
@@ -25,5 +25,9 @@ int main()
    		delete Array[i];
 	}
 	
-	return 0;
+	// Dog basic;
+	// {
+	// 	Dog tmp = basic;
+	// }
+	// return 0;
 }

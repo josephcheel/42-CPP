@@ -7,8 +7,6 @@
 
 class Dog: public AbstractAnimal {
 
-protected:
-	std::string	type;
 public:
 	Dog();
 	~Dog();
