@@ -1,4 +1,4 @@
-NAME = Bureaucrat
+NAME = Form
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow 
 DEPFLAGS	= -MMD -MP
@@ -8,7 +8,7 @@ MD			= mkdir -p
 CP			= cp -f
 CC			= c++
 
-SRC	=	main.cpp Bureaucrat.cpp \
+SRC	=	main.cpp Bureaucrat.cpp Form.cpp \
 
 
 SRC_DIR = src/
