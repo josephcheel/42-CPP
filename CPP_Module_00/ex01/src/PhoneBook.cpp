@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include <string>
 #include "../inc/Contact.class.hpp"
 #include "../inc/PhoneBook.class.hpp"
 
@@ -15,7 +16,15 @@ PhoneBook::~PhoneBook(void)
 	return ;
 }
 
-void	PhoneBook::add_contact()
+static bool isNumber(std::string str) {
+  for (int i = 0; str[i]; i++) {
+    if (std::isdigit(str[i]) == 0) 
+		return false;
+  }
+  return true;
+}
+
+void	PhoneBook::add_contact(int oldest)
 {
 	std::string first_name;
 	std::string last_name;
@@ -26,23 +35,35 @@ void	PhoneBook::add_contact()
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits < std::streamsize>::max(), '\n');
 	std::cout << "Enter First Name" << std::endl;
-	getline(std::cin, first_name);
+	while (first_name.length() == 0)
+		getline(std::cin, first_name);
 	std::cout << "Enter Last Name" << std::endl;
-	getline(std::cin, last_name);
+	while (last_name.length() == 0)
+		getline(std::cin, last_name);
 	std::cout << "Enter Nickname" << std::endl;
-	getline(std::cin, nickname);
+	while (nickname.length() == 0)
+		getline(std::cin, nickname);
 	std::cout << "Enter Phone Number" << std::endl;
-	getline(std::cin, phone);
+	while (phone.length() == 0 || !isNumber(phone))
+	{
+		if (phone.length() != 0)
+			std::cout << "Invalid Phone Number" << std::endl;
+		getline(std::cin, phone);
+	}
 	std::cout << "Enter Darkest Secret" << std::endl;
-	getline(std::cin, secret);
+	while (secret.length() == 0)
+		getline(std::cin, secret);
 
 	if (nbr_contacts == 8)
+	{
 		nbr_contacts = 7;
-	this->contacts[this->nbr_contacts].first_name = first_name;
-	this->contacts[this->nbr_contacts].last_name = last_name;
-	this->contacts[this->nbr_contacts].nickname = nickname;
-	this->contacts[this->nbr_contacts].phone_number = phone;
-	this->contacts[this->nbr_contacts].darkest_secret = secret;
+	}
+	this->contacts[this->nbr_contacts].setFirstName(first_name);
+	this->contacts[this->nbr_contacts].setLastName(last_name);
+	this->contacts[this->nbr_contacts].setNickname(nickname);
+	this->contacts[this->nbr_contacts].setPhoneNumber(phone);
+	this->contacts[this->nbr_contacts].setDarkestSecret(secret);
+	this->contacts[this->nbr_contacts].setOldest(oldest);
 	this->nbr_contacts++;
 }
 
@@ -57,11 +78,11 @@ void	PhoneBook::display_contact(void)
 	if (selected >= 1 && selected <= nbr_contacts)
 	{
 		std::cout << std::setw(10) << "--------------------------------" << std::endl;
-		std::cout << "First Name: " << this->contacts[selected - 1].first_name << std::endl;
-		std::cout << "Last Name: " << this->contacts[selected - 1].last_name << std::endl;
-		std::cout << "Nickname: " << this->contacts[selected - 1].nickname << std::endl;
-		std::cout << "Phone Number: " << this->contacts[selected - 1].phone_number << std::endl;
-		std::cout << "Darkest Secret: " << this->contacts[selected - 1].darkest_secret << std::endl;
+		std::cout << "First Name: " << this->contacts[selected - 1].getFirstName() << std::endl;
+		std::cout << "Last Name: " << this->contacts[selected - 1].getLastName() << std::endl;
+		std::cout << "Nickname: " << this->contacts[selected - 1].getNickname() << std::endl;
+		std::cout << "Phone Number: " << this->contacts[selected - 1].getPhoneNumber() << std::endl;
+		std::cout << "Darkest Secret: " << this->contacts[selected - 1].getDarkestSecret() << std::endl;
 		std::cout << std::setw(10) << "--------------------------------" << std::endl;
 	}
 	else
@@ -93,11 +114,11 @@ void	PhoneBook::search_contact(void)
 		std::cout << "|";
 		std::cout << std::setw(10) << i+1;
 		std::cout << "|";
-		std::cout << std::setw(10) << resize_string(this->contacts[i].first_name);
+		std::cout << std::setw(10) << resize_string(this->contacts[i].getFirstName());
 		std::cout << "|";
-		std::cout << std::setw(10) << resize_string(this->contacts[i].last_name);
+		std::cout << std::setw(10) << resize_string(this->contacts[i].getLastName());
 		std::cout << "|";
-		std::cout << std::setw(10) << resize_string(this->contacts[i].nickname);
+		std::cout << std::setw(10) << resize_string(this->contacts[i].getNickname());
 		std::cout << "|" << std::endl;;
 	}
 }

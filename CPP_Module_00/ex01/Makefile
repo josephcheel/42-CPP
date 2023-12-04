@@ -7,7 +7,7 @@ MD			= mkdir -p
 CP			= cp -f
 CC			= c++
 
-PHONEBOOK_SRC	=	main.cpp PhoneBook.cpp \
+PHONEBOOK_SRC	=	main.cpp PhoneBook.cpp Contact.cpp \
 
 
 SRC_DIR = src/

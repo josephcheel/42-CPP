@@ -1,7 +1,7 @@
 #ifndef PHONE_BOOK_H
 # define PHONE_BOOK_H
 # include "Contact.class.hpp"
-
+# include <iostream>
 class PhoneBook {
 
 private :
@@ -10,7 +10,7 @@ private :
 public:
 	PhoneBook();
 	~PhoneBook();
-	void add_contact(void);
+	void add_contact(int oldest);
 	void display_contact(void);
 	void search_contact();
 };
