@@ -14,6 +14,4 @@ class Weapon {
 		void  setType(std::string type);
 };
 
-// Weapon* Weapon(std::string type);
-
 #endif
