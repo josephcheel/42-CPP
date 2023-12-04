@@ -47,6 +47,13 @@ int main(int ac, char **av)
 		return 1;
 	}
 
+	if (s1.empty() || s2.empty())
+	{
+		std::cout << "Empty string" << std::endl;
+		inFile.close();
+		return 1;
+	}
+	
 	// Creates the <filename>.replace 
 	std::ofstream outFile(filename + ".replace");
 	if (!outFile.is_open())
@@ -60,7 +67,7 @@ int main(int ac, char **av)
 	while (std::getline(inFile, line))
 	{	
 		result = ft_replace(line, s1, s2);
-    	outFile << result << "\n";
+    		outFile << result << "\n";
 	}		
 	// Close Files
 	outFile.close();
