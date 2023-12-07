@@ -8,3 +8,10 @@
   <!--<img alt="Complete" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/complete.svg">-->
 </h1>
 <!--FINISH HEADER-->
+
+| Folder | Title | Subject Concepts | Description |
+|:---:|---|:---:|:---:|
+| ex00 | My First Class in Orthodox Canonical Form |  |  |
+| ex01 | Towards a more useful fixed-point number class |  |  |
+| ex02 | Now we’re talking |  |  |
+| ex03 | BSP |  |  |

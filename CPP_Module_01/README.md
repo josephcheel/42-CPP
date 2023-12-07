@@ -8,3 +8,13 @@
   <!--<img alt="Complete" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/complete.svg">-->
 </h1>
 <!--FINISH HEADER-->
+
+| Folder | Title | Subject Concepts | Description |
+|:---:|---|:---:|:---:|
+| ex00 | BraiiiiiiinnnzzzZ |  |  |
+| ex01 | Moar brainz! |  |  |
+| ex02 | HI THIS IS BRAIN |  |  |
+| ex03 | Unnecessary violence |  |  |
+| ex04 | Sed is for losers |  |  |
+| ex05 | Harl 2.0 |  |  |
+| ex06 | Harl filter |  |  |

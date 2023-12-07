@@ -8,3 +8,9 @@
   <!--<img alt="Complete" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/complete.svg">-->
 </h1>
 <!--FINISH HEADER-->
+
+| Folder | Title | Subject Concepts | Description |
+|:---:|---|:---:|:---:|
+| ex00 | Easy Find |  |  |
+| ex01 | Span |  |  |
+| ex02 | Mutated abomination |  |  |

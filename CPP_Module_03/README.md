@@ -8,3 +8,10 @@
   <!--<img alt="Complete" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/complete.svg">-->
 </h1>
 <!--FINISH HEADER-->
+
+| Folder | Title | Subject Concepts | Description |
+|:---:|---|:---:|:---:|
+| ex00 | Aaaaand... OPEN! |  |  |
+| ex01 | Serena, my love! |  |  |
+| ex02 | Repetitive work |  |  |
+| ex03 | Now it’s weird! |  |  |
