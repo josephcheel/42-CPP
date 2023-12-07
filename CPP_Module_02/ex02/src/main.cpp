@@ -26,7 +26,7 @@ int main(void)
 	std::cout << "a++\t\t\t" << a++ << std::endl;
 	std::cout << "a\t\t\t" << a << std::endl;
 
-	std::cout << "--------" << "OPERATORS" << "----------------" << std::endl;
+	std::cout << "--------" << "OPERATORS (nbr1 op nbr2)" << "----------------" << std::endl;
 	std::cout << "sum(+)\t\t\t" << (nbr1 + nbr2) << std::endl;
 	std::cout << "sub(-)\t\t\t" << (nbr1 - nbr2) << std::endl;
 	std::cout << "mul(*)\t\t\t" << (nbr1 * nbr2) << std::endl;

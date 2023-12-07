@@ -50,6 +50,7 @@ float	Fixed::toFloat( void ) const
 {
 	return((float)this->_fixed_nbr / (float)(1 << this->_nbr_fract_bits));
 }
+
 int		Fixed::toInt( void ) const
 {
 	return((int)roundf(this->_fixed_nbr / (1 << this->_nbr_fract_bits)));
