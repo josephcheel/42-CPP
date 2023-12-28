@@ -1,4 +1,4 @@
-NAME = FixedPoint
+NAME = BSP
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 
 DEPFLAGS	= -MMD -MP

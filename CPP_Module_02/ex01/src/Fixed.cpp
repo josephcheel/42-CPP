@@ -56,8 +56,6 @@ int		Fixed::toInt( void ) const
 	return((int)roundf(this->_fixed_nbr / (1 << this->_nbr_fract_bits)));
 }
 
-
-
 std::ostream & operator<<(std::ostream &ostream,  const Fixed &fixed_nbr)
 {
 	ostream << fixed_nbr.toFloat();
