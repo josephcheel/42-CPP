@@ -18,6 +18,7 @@ class Point {
 		float getPointX(void) const;
 };
 
+std::ostream	& operator<<(std::ostream &ostream,  const Point &points); 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
 float	get_triangle_area(Point const a, Point const b, Point const c);
 

@@ -13,7 +13,7 @@ class Fixed {
 		void setRawBits( int const raw );
 	private :
 		int _fixed_nbr;
-		static const int _nbr_fract_bits;
+		static const int _nbr_fract_bits = 8;
 };
 
 #endif

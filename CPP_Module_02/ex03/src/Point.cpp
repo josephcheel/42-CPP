@@ -41,3 +41,8 @@ float	Point::getPointX(void) const
 	return (this->_x.toFloat());
 }
 
+std::ostream & operator<<(std::ostream &ostream,  const Point &points)
+{
+	ostream << "X = " << points.getPointX() << "; Y = " << points.getPointY() << ";";
+	return (ostream);
+}
