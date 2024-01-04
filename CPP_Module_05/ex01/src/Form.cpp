@@ -34,13 +34,12 @@ const Form &Form::operator=(const Form &copy)
 	return (*this);
 }
 
-
 void	Form::beSigned(Bureaucrat &B)
 {
 	if (B.getGrade() <= this->_gradeToSigned)
 		this->_signed = true;
 	else if (B.getGrade() > this->_gradeToSigned)
-		Form::GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
 
 std::string	Form::getName() const

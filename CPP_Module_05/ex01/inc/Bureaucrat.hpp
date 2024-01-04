@@ -33,6 +33,7 @@ class Bureaucrat {
 					return ("GradeTooHighException: Grade Too High");
 				}
 		};
+		
 		class GradeTooLowException : public std::exception
 		{
 			public:

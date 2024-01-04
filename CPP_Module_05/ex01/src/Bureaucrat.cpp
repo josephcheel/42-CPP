@@ -80,7 +80,7 @@ void	Bureaucrat::signForm(Form &form)
 	}
 	else
 	{
-		std::cout << this->getName() << " couldn’t sign " <<  form.getName() << " because " << std::endl;
-		Form::GradeTooLowException();
+		std::cout << this->getName() << " couldn’t sign " <<  form.getName() << " because Grade is too low" << std::endl;
+		throw Form::GradeTooLowException();
 	}
 }

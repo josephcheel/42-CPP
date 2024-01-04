@@ -4,7 +4,7 @@
 # include <string>
 # include "Bureaucrat.hpp"
 
-class Form {
+class AForm {
 
 	private:
 		std::string const	_name;
@@ -12,12 +12,12 @@ class Form {
 		const int			_gradeToSigned;
 		const int 			_gradeToExecute;
 	public: 
-		Form();
-		Form(std::string	name, bool	Signed, int	GradeToSigned, int	GradeToExecute);
-		virtual ~Form() = 0;
+		AForm();
+		AForm(std::string	name, bool	Signed, int	GradeToSigned, int	GradeToExecute);
+		virtual ~AForm() = 0;
 
-		Form(Form &copy);
-		const Form &operator=(const Form &copy);
+		AForm(AForm &copy);
+		const AForm &operator=(const AForm &copy);
 
 		void	beSigned(class Bureaucrat & B);
 
@@ -44,6 +44,6 @@ class Form {
 
 };
 
-std::ostream& operator<<(std::ostream& stream, const Form& copy);
+std::ostream& operator<<(std::ostream& stream, const AForm& copy);
 
 #endif

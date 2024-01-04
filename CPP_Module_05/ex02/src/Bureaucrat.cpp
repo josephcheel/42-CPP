@@ -1,4 +1,4 @@
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 #include "../inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat()
@@ -71,7 +71,7 @@ std::ostream &operator<<(std::ostream& stream, const Bureaucrat &copy)
 	return (stream); 
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	if (form.getGradeToSigned() >= this->getGrade())
 	{
@@ -81,6 +81,6 @@ void	Bureaucrat::signForm(Form &form)
 	else
 	{
 		std::cout << this->getName() << " couldn’t sign " <<  form.getName() << " because " << std::endl;
-		Form::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 }

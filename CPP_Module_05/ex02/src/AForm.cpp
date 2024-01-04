@@ -1,11 +1,11 @@
 #include "../inc/AForm.hpp"
 #include "../inc/Bureaucrat.hpp"
 
-Form::Form() : _name(""), _signed(false), _gradeToSigned(0), _gradeToExecute(0)
+AForm::AForm() : _name(""), _signed(false), _gradeToSigned(0), _gradeToExecute(0)
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
-Form::Form(std::string	name, bool	Signed, int	GradeToSigned, int	GradeToExecute) :
+AForm::AForm(std::string	name, bool	Signed, int	GradeToSigned, int	GradeToExecute) :
 _name(name),
 _signed(Signed),
 _gradeToSigned(GradeToSigned),
@@ -14,12 +14,12 @@ _gradeToExecute(GradeToExecute)
 	std::cout << "Form constructor called" << std::endl;
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "Form destructor called" << std::endl;
 }
 
-Form::Form(Form &copy) :
+AForm::AForm(AForm &copy) :
 _name(copy._name),
 _signed(copy._signed),
 _gradeToSigned(copy._gradeToSigned),
@@ -28,40 +28,40 @@ _gradeToExecute(copy._gradeToExecute)
 	std::cout << "Form copy constructor called" << std::endl;
 }
 
-const Form &Form::operator=(const Form &copy)
+const AForm &AForm::operator=(const AForm &copy)
 {
 	(void)copy;
 	return (*this);
 }
 
 
-void	Form::beSigned(Bureaucrat &B)
+void	AForm::beSigned(Bureaucrat &B)
 {
 	if (B.getGrade() <= this->_gradeToSigned)
 		this->_signed = true;
 	else if (B.getGrade() > this->_gradeToSigned)
-		Form::GradeTooLowException();
+		AForm::GradeTooLowException();
 }
 
-std::string	Form::getName() const
+std::string	AForm::getName() const
 {
 	return (_name);
 }
 
-bool		Form::getSigned() const
+bool		AForm::getSigned() const
 {
 	return (_signed);
 }
-int			Form::getGradeToSigned() const
+int			AForm::getGradeToSigned() const
 {
 	return (_gradeToSigned);
 }
-int			Form::getGradeToExecute() const
+int			AForm::getGradeToExecute() const
 {
 	return (_gradeToExecute);
 }
 
-std::ostream& operator<<(std::ostream& stream, const Form &copy)
+std::ostream& operator<<(std::ostream& stream, const AForm &copy)
 {
 	stream << "Form object named " << copy.getName();
 	if (copy.getSigned() == true)

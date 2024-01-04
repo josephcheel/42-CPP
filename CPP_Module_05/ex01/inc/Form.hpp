@@ -26,7 +26,7 @@ class Form {
 		int			getGradeToSigned() const;
 		int			getGradeToExecute() const;
 		
-	class GradeTooHighException {
+	class GradeTooHighException : public std::exception {
 		public:
 			virtual const char* what() const throw() 
 			{
@@ -34,17 +34,16 @@ class Form {
 			}
 	};
 
-	class GradeTooLowException {
+	class GradeTooLowException : public std::exception {
 		public:
 			virtual const char* what() const throw() 
 			{
-				return ("GradeTooHighException: Grade Too High");
+				return ("GradeTooLowException: Grade Too Low");
 			}
 	};
 
 };
 
 std::ostream& operator<<(std::ostream& stream, const Form& copy);
-
 
 #endif
