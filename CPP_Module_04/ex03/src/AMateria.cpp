@@ -6,17 +6,18 @@ AMateria::AMateria()
 	std::cout << "AMateria Default constructor called" << std::endl;
 }
 
-AMateria::AMateria(std::string const & type)
+
+AMateria::~AMateria()
+{
+	std::cout << "AMateria destructor called" << std::endl;
+}
+
+AMateria::AMateria(std::string const & type) : _type(type)
 {
 	std::cout << "AMateria constructor called" << std::endl;
 }
 
-AMateria::~AMateria()
-{
-	std::cout << "AMateria desctructor called" << std::endl;
-}
-
-AMateria::AMateria(AMateria &copy) : _type(copy._type)
+AMateria::AMateria(const AMateria &copy) : _type(copy._type)
 {
 	std::cout << "AMateria copy constructor called" << std::endl;
 }
@@ -34,8 +35,19 @@ std::string const & AMateria::getType() const //Returns the materia type
 {
 	return (_type);
 }
-	
+
+void	AMateria::setType(std::string type)
+{
+	this->_type = type;
+}
+
 void AMateria::use(ICharacter& target)
 {
-
+	(void)target;
 }
+
+AMateria* AMateria::clone() const
+{
+	return (new AMateria(*this));
+}
+

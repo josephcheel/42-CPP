@@ -1,17 +1,19 @@
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
-# include "AMateria.hpp"
+
+# include <iostream>
 # include "ICharacter.hpp"
 
 class Character : public ICharacter {
 	protected:
-		std::array<AMateria, 4> materias;
+		AMateria *materias[4];
+		//std::array<AMateria, 4> materias;
 		std::string _name;
 	public:
 		Character();
-		Character(std::string name);
+		Character(const std::string name);
 		Character(Character &copy);
-		~Character() {}
+		~Character();
 		
 		Character &operator=(Character &copy);
 
@@ -22,5 +24,3 @@ class Character : public ICharacter {
 };
 
 #endif
-	
-	

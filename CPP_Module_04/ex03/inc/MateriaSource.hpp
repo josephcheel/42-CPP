@@ -8,13 +8,13 @@
 class MateriaSource : public IMateriaSource{
 
 	protected:
-		std::array<AMateria, 4> materias;
+		AMateria *materias[4];
 	public:
 		MateriaSource();
-		MateriaSource(MateriaSource &copy);
+		MateriaSource(const MateriaSource &copy);
 		~MateriaSource();
 
-		MateriaSource &operator=(MateriaSource &copy);
+		MateriaSource &operator=(const MateriaSource &copy);
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
 };
