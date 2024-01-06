@@ -2,14 +2,13 @@
 #include "ClapTrap.hpp"
 
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	std::cout << "ScavTrap Default constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) 
-{	
-	_name = name;
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+{
 	_HitPoints = 100;
 	_EnergyPoints = 50;
 	_AttackDamage = 20;
@@ -27,25 +26,30 @@ ScavTrap::ScavTrap(ScavTrap const & copy)
 	*this = (ScavTrap &)copy;
 }
 
-ScavTrap &ScavTrap::operator=(ScavTrap &copy)
+ScavTrap &ScavTrap::operator=(ScavTrap &copy) 
 {
 	if (this != &copy)
 	{
-		this->_name = copy._name;
-		this->_HitPoints = copy._HitPoints;
-		this->_EnergyPoints = copy._EnergyPoints;
-		this->_AttackDamage = copy._AttackDamage;
+		ClapTrap::operator=(copy);
 	}
 	return (*this);
 }
 
 void ScavTrap::attack(const std::string& target)
 {
-	if (_EnergyPoints <= 0)
+	if (_HitPoints <= 0)
+	{
+		std::cout << "ScavTrap " << _name << " is dead. Could not attack" << std::endl;
 		return ;
-	std::cout << "ScavTrap " << _name << " attacks " << target <<  " causing " << _AttackDamage << " points of damage!";
+	}
+	if (_EnergyPoints <= 0 )
+	{
+		std::cout << "ScavTrap " << _name << " has no energy points left. Could not attack" << std::endl;
+		return ;
+	}
+	std::cout << "ScavTrap " << _name << " attacks " << target <<  " causing " << _AttackDamage << " points of damage!" << std::endl;
 	_EnergyPoints -= 1;
-	std::cout << " and Spent 1 energy point on Attack" << std::endl;
+	std::cout << "1 energy point spent on attacking" << std::endl;
 }	
 
 

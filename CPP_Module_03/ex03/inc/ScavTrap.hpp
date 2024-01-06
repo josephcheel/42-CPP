@@ -15,4 +15,5 @@ class ScavTrap : virtual public ClapTrap {
 		ScavTrap(void);
 };
 
+
 #endif
