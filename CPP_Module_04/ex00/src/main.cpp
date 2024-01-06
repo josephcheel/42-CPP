@@ -7,6 +7,7 @@
 int main() 
 {
 	std::cout << std::endl;
+	std::cout << std::endl << "-----------Animal-------------" << std::endl << std::endl;
 	// Declaration Animal Dog and Cat classed
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
@@ -19,10 +20,10 @@ int main()
 	std::cout << meta->getType() << " " << std::endl;
 
 	std::cout << std::endl;
-	
+
 	// Make sound member function for three classes
-	i->makeSound(); //will output the cat sound! 
-	j->makeSound();
+	j->makeSound(); //will output the cat sound! 
+	i->makeSound();
     meta->makeSound();
 	
 	std::cout << std::endl;
@@ -31,7 +32,7 @@ int main()
 	delete j;
 	delete i;
 
-	std::cout << std::endl << std::endl;
+	std::cout << std::endl << "-----------WrongCat-------------" << std::endl << std::endl;
 
 	// Declaration of WrongAnimal and WrongCat
 	const WrongAnimal*	meta1 = new WrongAnimal();
