@@ -1,5 +1,6 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
+#include "Color.hpp"
 
 
 ScavTrap::ScavTrap() : ClapTrap("")
@@ -7,7 +8,7 @@ ScavTrap::ScavTrap() : ClapTrap("")
 	_HitPoints = 100;
 	_EnergyPoints = 50;
 	_AttackDamage = 20;
-	std::cout << "ScavTrap Default constructor called" << std::endl;
+	std::cout << CYAN << "ScavTrap Default constructor called" << RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -15,22 +16,23 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_HitPoints = 100;
 	_EnergyPoints = 50;
 	_AttackDamage = 20;
-	std::cout << "ScavTrap Construtor called" << std::endl;
+	std::cout << CYAN << "ScavTrap Construtor called" << RESET << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScapTrap destructor called" << std::endl;
+	std::cout << YELLOW << "ScapTrap destructor called" << RESET << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const & copy)
 {
-	std::cout << "ScavTrap destructor called" << std::endl;
+	std::cout << "ScavTrap copy constructor called" << std::endl;
 	*this = (ScavTrap &)copy;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy) 
 {
+	std::cout <<  MAGENTA << "ScavTrap copy assignment operator called" << RESET << std::endl;
 	if (this != &copy)
 	{
 		_name = copy._name;
@@ -55,11 +57,11 @@ void ScavTrap::attack(const std::string& target)
 	}
 	std::cout << "ScavTrap " << _name << " attacks " << target <<  " causing " << _AttackDamage << " points of damage!" << std::endl;
 	_EnergyPoints -= 1;
-	std::cout << "1 energy point spent on attacking" << std::endl;
+	std::cout << WHITE << "1 energy point spent on attacking" << std::endl;
 }	
 
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << _name << " is now on Gate keeper mode" << std::endl;
+	std::cout << GREEN << "ScavTrap " << _name << " is now on Gate keeper mode" << RESET << std::endl;
 }

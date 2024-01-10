@@ -37,6 +37,10 @@ int main(void)
 
 	// High fives
 	Ally.highFivesGuys();
+
+	// Who am I
+	Ally.whoAmI();
+	Enemy.whoAmI();
 	
 
 }

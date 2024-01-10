@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	std::cout << "\n------------OBJECT CONSTRUCTORS-------------\n" << std::endl;
 	// Default Constructor
 	ClapTrap none;
 
@@ -15,6 +16,7 @@ int main(void)
 	// Copy Assignment
 	none = Enemy;
 
+	std::cout << "\n------------OBJECT OWN METHODS-------------\n" << std::endl;
 	// ClapTrap Ally attack ClapTrap Enemy
 	Ally.attack("Enemy");
 	
@@ -31,4 +33,6 @@ int main(void)
 	
 	// Ally Can´t Attack
 	Ally.attack("Enemy");
+	std::cout << "\n------------OBJECT DESTRUCTOR-------------\n" << std::endl;
+	return (0);
 }

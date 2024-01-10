@@ -1,4 +1,5 @@
 #include "../inc/DiamondTrap.hpp"
+#include "../inc/Color.hpp"
 
 DiamondTrap::DiamondTrap( void )
 {
@@ -6,7 +7,7 @@ DiamondTrap::DiamondTrap( void )
 	_HitPoints = FragTrap::_HitPoints;
 	_EnergyPoints = ScavTrap::_EnergyPoints;
 	_AttackDamage = FragTrap::_AttackDamage;
-	std::cout << "DiamondTrap default constructor was called" << std::endl;
+	std::cout << GREEN << "DiamondTrap default constructor was called" << RESET << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string const &name) //: ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), _name(name)
@@ -18,20 +19,21 @@ DiamondTrap::DiamondTrap(std::string const &name) //: ClapTrap(name + "_clap_nam
 	_HitPoints = FragTrap::_HitPoints;
 	_EnergyPoints = ScavTrap::_EnergyPoints;
 	_AttackDamage = FragTrap::_AttackDamage;
-	std::cout << "DiamondTrap Constructor called" << std::endl;
+	std::cout << GREEN << "DiamondTrap Constructor called" << RESET << std::endl;
 }
 
 DiamondTrap::~DiamondTrap(void)
 {
-	std::cout << "DiamondTrap Destructor called" << std::endl;
+	std::cout << RED << "DiamondTrap Destructor called" << RESET << std::endl;
 }
 DiamondTrap::DiamondTrap(const DiamondTrap &copy)
 {
 	*this = copy;
-	std::cout << "DiamondTrap Copy constructor called" << std::endl;
+	std::cout << BLUE << "DiamondTrap Copy constructor called" << RESET << std::endl;
 }
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap &copy)
 {
+	std::cout << MAGENTA << "DiamondTrap copy assignment constructor called" << RESET << std::endl;
 	if (this != &copy)
 	{
 		ClapTrap::_name = copy._name + "_clap_name";
