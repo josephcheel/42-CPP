@@ -14,7 +14,7 @@
 |:-----------:|-----------------------------------------------------------------------------------------------------------------|:-------:|
 |  [Module 00](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_00)  | Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic | **92** |
 |  [Module 01](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_01)  | Memory allocation, pointers to members, references, switch statement                                            | **100** |
-|  [Module 02](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_02)  | Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form                                     | **TBD** |
+|  [Module 02](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_02)  | Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form                                     | **100** |
 |  [Module 03](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_03)  | Inheritance                                                                                                     | **TBD** |
 |  [Module 04](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_04)  | Subtype polymorphism, abstract classes, interfaces                                                              | **TBD** |
 |  [Module 05](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_05)  | Repetition and Exceptions                                                                                       | **TBD** |
