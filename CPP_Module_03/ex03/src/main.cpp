@@ -10,6 +10,7 @@ int main(void)
 	Enemy.takeDamage(10);
 	Enemy.beRepaired(2);
 
+	Joseph.whoAmI();
 	// Enemy.attack("Joseph");
 	// Joseph.takeDamage(10);
 	// Joseph.beRepaired(2);

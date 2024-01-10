@@ -9,6 +9,9 @@ int main(void)
 	Enemy.takeDamage(Joseph.getAttackDamage());
 	Enemy.beRepaired(2);
 	Enemy.highFivesGuys();
+
+	Joseph = Enemy;
+	
 	// Enemy.attack("Joseph");
 	// Joseph.takeDamage(10);
 	// Joseph.beRepaired(2);

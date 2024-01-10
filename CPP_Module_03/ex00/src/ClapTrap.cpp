@@ -1,11 +1,12 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+ClapTrap::ClapTrap(std::string name) : _name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
 {
-	_HitPoints = 10;
-	_EnergyPoints = 10;
-	_AttackDamage = 0;
-	_MaxHitPoints = _HitPoints;
+	std::cout << "Constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap() : _name(""), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
+{
 	std::cout << "Default constructor called" << std::endl;
 }
 
@@ -16,20 +17,19 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << " ClapTrap Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 	*this = (ClapTrap &)copy;
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap &copy)
+ClapTrap &ClapTrap::operator=(const ClapTrap &copy)
 {
-	std::cout << " ClapTrap Copy Assignment contrusctor called" << std::endl;
+	std::cout << "ClapTrap Copy Assignment constructor called" << std::endl;
 	if (this != &copy)
 	{
-		const_cast<std::string&>(this->_name) = copy._name;
+		this->_name = copy._name;
 		this->_HitPoints = copy._HitPoints;
 		this->_EnergyPoints = copy._EnergyPoints;
 		this->_AttackDamage = copy._AttackDamage;
-		this->_MaxHitPoints = copy._MaxHitPoints;
 	}
 	return (*this);
 } 
@@ -71,10 +71,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << _name << " is dead. Could not be repaired" << std::endl;
 		return ;
 	}
-	if (_HitPoints + amount > _MaxHitPoints)
-		_HitPoints = _MaxHitPoints;
-	else
-		_HitPoints += amount;
+
+	_HitPoints += amount;
 	_EnergyPoints -= 1;
 
 	std::cout << "ClapTrap " << _name <<  " repaired " << amount << " of Hit Points(health). Now has "<< _HitPoints << " Hit points(health) left" << std::endl;
