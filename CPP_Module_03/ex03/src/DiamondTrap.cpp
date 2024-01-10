@@ -12,8 +12,6 @@ DiamondTrap::DiamondTrap( void )
 
 DiamondTrap::DiamondTrap(std::string const &name) //: ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), _name(name)
 {
-	
-	
 	_name = name;
 	ClapTrap::_name = name + "_clap_name";
 	_HitPoints = FragTrap::_HitPoints;
