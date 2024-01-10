@@ -5,7 +5,6 @@ int main(void)
 	// Default Constructor
 	ClapTrap none;
 
-	
 	// String Constructors
 	ClapTrap Ally("Ally");
 	ClapTrap Enemy("Enemy");
@@ -24,7 +23,7 @@ int main(void)
 	Enemy.beRepaired(20);
 
 	// ClapTrap Enemy attack ClapTrap Ally
-	Enemy.attack("Joseph");
+	Enemy.attack("Ally");
 	
 	// ClapTrap Ally gets damage from ClapTrap Enemy. Ally Can´t Repair
 	Ally.takeDamage(10);
