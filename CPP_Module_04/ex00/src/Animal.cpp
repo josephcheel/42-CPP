@@ -23,7 +23,7 @@ Animal::Animal(Animal const &copy) : type(copy.type)
 
 Animal const &Animal::operator=(Animal const &copy)
 {
-	std::cout << "ANimal copy operator assignment called" << std::endl;
+	std::cout << "Animal copy operator assignment called" << std::endl;
 	if (this != &copy)
 	{
 		type = copy.type;

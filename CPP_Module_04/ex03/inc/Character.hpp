@@ -7,7 +7,6 @@
 class Character : public ICharacter {
 	protected:
 		AMateria *materias[4];
-		//std::array<AMateria, 4> materias;
 		std::string _name;
 	public:
 		Character();

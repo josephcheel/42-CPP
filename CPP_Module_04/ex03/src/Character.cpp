@@ -12,6 +12,11 @@ Character::Character(const std::string name) : _name(name)
 
 Character::~Character()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->materias[i])
+			delete (this->materias[i]);
+	}
 	std::cout << "Character destructor called" << std::endl;
 }
 		
@@ -22,10 +27,16 @@ Character::Character(Character &copy) : _name(copy._name)
 
 Character &Character::operator=(Character &copy)
 {
+	std::cout << "Character copy assignment constuctor called" << std::endl;
 	if (this != &copy)
 	{
 		this->_name = copy._name;
-		//this->materias = copy->materias;
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->materias[i])
+				delete (this->materias[i]);
+			this->materias[i] = copy.materias[i]->clone();
+		}
 	}
 	return (*this);
 }
@@ -39,8 +50,11 @@ void Character::equip(AMateria* m)
 {
 	for(int i = 0; i < 4; i++)
 	{
-		if (materias[i]->getType().empty())
+		if (!materias[i])
+		{
 			materias[i] = m;
+			break ;
+		}
 	}
 }
 void Character::unequip(int idx)
@@ -53,8 +67,10 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (materias[idx]->getType().empty())
+	if (idx >= 0 && idx && idx < 4 && !(this->materias)[idx])
 	{
-		(void)target;
+		(this->materias)[idx]->use(target);
 	}
+	else
+		std::cout << "No materia in this slot" << std::endl;
 }

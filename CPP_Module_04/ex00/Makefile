@@ -2,7 +2,7 @@ NAME = Animals
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow 
 DEPFLAGS	= -MMD -MP
-DEBFLAGS	= -fsanitize=address -pedantic -pedantic-errors
+DEBFLAGS	= #-fsanitize=address -pedantic -pedantic-errors
 RM			= rm -f
 MD			= mkdir -p
 CP			= cp -f

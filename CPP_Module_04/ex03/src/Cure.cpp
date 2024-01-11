@@ -15,7 +15,6 @@ Cure::~Cure()
 	std::cout << "Cure destructor called" << std::endl;
 }
 
-
 Cure &Cure::operator=(const Cure &copy) 
 {
 	if (this != &copy)
@@ -33,5 +32,5 @@ Cure* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	(void)target;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

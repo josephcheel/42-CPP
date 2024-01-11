@@ -24,7 +24,7 @@ int main()
 	// Make sound member function for three classes
 	j->makeSound(); //will output the cat sound! 
 	i->makeSound();
-    meta->makeSound();
+	meta->makeSound();
 	
 	std::cout << std::endl;
    	// delete objects

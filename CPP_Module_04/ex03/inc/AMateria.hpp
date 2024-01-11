@@ -16,7 +16,7 @@ class AMateria {
 		virtual ~AMateria();
 		AMateria(const AMateria &copy);
 
-		AMateria &operator=(AMateria &copy);
+		AMateria &operator=(const AMateria &copy);
 
 		void	setType(std::string const type);
 		std::string const & getType() const; //Returns the materia type

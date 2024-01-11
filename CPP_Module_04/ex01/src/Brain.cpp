@@ -17,6 +17,7 @@ Brain::Brain(Brain const &copy) : ideas(copy.ideas)
 
 Brain &Brain::operator=(Brain const &copy)
 {
+	std::cout << "Brain copy operator assignment called" << std::endl;
 	if (this != &copy)
 	{
 		ideas = copy.ideas;
