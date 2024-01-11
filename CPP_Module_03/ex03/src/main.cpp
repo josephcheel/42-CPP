@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	std::cout << "\n------------OBJECT CONSTRUCTORS-------------\n" << std::endl;
 	// Default Constructor
 	DiamondTrap none;
 
@@ -15,17 +16,18 @@ int main(void)
 	// Copy Assignment
 	none = Enemy;
 
-	// ClapTrap Ally attack ClapTrap Enemy
+	std::cout << "\n------------OBJECT OWN METHODS-------------\n" << std::endl;
+	// DiamondTrap Ally attack DiamondTrap Enemy
 	Ally.attack("Enemy");
 	
-	// ClapTrap Enemy gets damage from ClapTrap Enemy and Repairs
+	// DiamondTrap Enemy gets damage from DiamondTrap Enemy and Repairs
 	Enemy.takeDamage(Ally.getAttackDamage());
 	Enemy.beRepaired(20);
 
-	// ClapTrap Enemy attack ClapTrap Ally
+	// DiamondTrap Enemy attack DiamondTrap Ally
 	Enemy.attack("Ally");
 	
-	// ClapTrap Ally gets damage from ClapTrap Enemy. Ally Can´t Repair
+	// DiamondTrap Ally gets damage from DiamondTrap Enemy. Ally Can´t Repair
 	Ally.takeDamage(10);
 	Ally.beRepaired(30);
 	
@@ -42,5 +44,6 @@ int main(void)
 	Ally.whoAmI();
 	Enemy.whoAmI();
 	
-
+	std::cout << "\n------------OBJECT DESTRUCTOR-------------\n" << std::endl;
+	return (0);
 }

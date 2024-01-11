@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	std::cout << "\n------------OBJECT CONSTRUCTORS-------------\n" << std::endl;
 	// Default Constructor
 	FragTrap none;
 
@@ -15,17 +16,18 @@ int main(void)
 	// Copy Assignment
 	none = Enemy;
 
-	// ClapTrap Ally attack ClapTrap Enemy
+	std::cout << "\n------------OBJECT OWN METHODS-------------\n" << std::endl;
+	// FragTrap Ally attack FragTrap Enemy
 	Ally.attack("Enemy");
 	
-	// ClapTrap Enemy gets damage from ClapTrap Enemy and Repairs
+	// FragTrap Enemy gets damage from FragTrap Enemy and Repairs
 	Enemy.takeDamage(Ally.getAttackDamage());
 	Enemy.beRepaired(20);
 
-	// ClapTrap Enemy attack ClapTrap Ally
+	// FragTrap Enemy attack FragTrap Ally
 	Enemy.attack("Ally");
 	
-	// ClapTrap Ally gets damage from ClapTrap Enemy. Ally Can´t Repair
+	// FragTrap Ally gets damage from FragTrap Enemy. Ally Can´t Repair
 	Ally.takeDamage(10);
 	Ally.beRepaired(30);
 	
@@ -34,4 +36,7 @@ int main(void)
 
 	// High Fives
 	Ally.highFivesGuys();
+
+	std::cout << "\n------------OBJECT DESTRUCTOR-------------\n" << std::endl;
+	return (0);
 }

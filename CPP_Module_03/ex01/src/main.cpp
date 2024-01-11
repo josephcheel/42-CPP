@@ -3,6 +3,7 @@
 
 int main(void)
 {
+	std::cout << "\n------------OBJECT CONSTRUCTORS-------------\n" << std::endl;
 	// Default Constructor
 	ScavTrap none;
 
@@ -16,17 +17,18 @@ int main(void)
 	// Copy Assignment
 	none = Enemy;
 
-	// ClapTrap Ally attack ClapTrap Enemy
+	std::cout << "\n------------OBJECT OWN METHODS-------------\n" << std::endl;
+	// ClapTrap Ally attack ScavTrap Enemy
 	Ally.attack("Enemy");
 	
-	// ClapTrap Enemy gets damage from ClapTrap Enemy and Repairs
+	// ScavTrap Enemy gets damage from ScavTrap Enemy and Repairs
 	Enemy.takeDamage(Ally.getAttackDamage());
 	Enemy.beRepaired(20);
 
-	// ClapTrap Enemy attack ClapTrap Ally
+	// ScavTrap Enemy attack ScavTrap Ally
 	Enemy.attack("Ally");
 	
-	// ClapTrap Ally gets damage from ClapTrap Enemy. Ally Can´t Repair
+	// ScavTrap Ally gets damage from ScavTrap Enemy. Ally Can´t Repair
 	Ally.takeDamage(10);
 	Ally.beRepaired(30);
 	
@@ -35,4 +37,7 @@ int main(void)
 
 	// Guard Gate
 	Ally.guardGate();
+	
+	std::cout << "\n------------OBJECT DESTRUCTOR-------------\n" << std::endl;
+	return (0);
 }
