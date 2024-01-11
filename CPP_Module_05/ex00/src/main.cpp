@@ -4,8 +4,8 @@ int main()
 {
 	try
 	{
-		// Bureaucrat instance1("me", 151);
-		// Bureaucrat instance2("me", 0);
+		//Bureaucrat instance1("me", 151);
+		//Bureaucrat instance2("me", 0);
 		Bureaucrat instance3("me", 150);
 		std::cout << instance3 << std::endl;
 		instance3.decrementGrade();

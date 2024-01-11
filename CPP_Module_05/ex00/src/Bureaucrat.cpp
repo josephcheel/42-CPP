@@ -70,3 +70,13 @@ std::ostream &operator<<(std::ostream& stream, const Bureaucrat &copy)
 	stream << copy.getName() <<" , bureaucrat grade " << copy.getGrade();
 	return (stream); 
 }
+
+const char * Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("GradeTooHighException: Grade Too High");
+}
+
+const char * Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("GradeTooLowException: Grade Too Low");
+}
