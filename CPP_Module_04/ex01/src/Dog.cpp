@@ -8,7 +8,7 @@ Dog::Dog() : Animal("Dog"), DogBrain(new Brain())
 Dog::Dog::~Dog()
 {
 	delete DogBrain;
-	std::cout << "Dog desctructor called" << std::endl;
+	std::cout << "Dog destructor called" << std::endl;
 }
 
 Dog::Dog(Dog const &copy) : Animal(copy.type), DogBrain(new Brain())
