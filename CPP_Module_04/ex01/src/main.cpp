@@ -6,28 +6,49 @@
 
 int main() 
 {
+	std::cout << "--------------SUBJECT TEST---------------" << std::endl << std::endl;
+	{
+			
+		const Animal* j = new Dog(); 
+		const Animal* i = new Cat();
 
-	const Animal* j = new Dog(); 
-	const Animal* i = new Cat();
+		delete j;//should not create a leak 
+		delete i;
+		
+		const Animal* Array[20];
 
-	delete j;//should not create a leak 
-	delete i;
-	
-	const Animal* Array[20];
+		for(int i = 0; i < 10; i++) {
+			Array[i] = new Dog();
+		}
+		for(int i= 10; i< 20; i++) {
+			Array[i] = new Cat();
+		}
+		for (int i = 0; i < 20; i++) {
+			delete Array[i];
+		}
 
-	for(int i = 0; i < 10; i++) {
-		Array[i] = new Dog();
 	}
-	for(int i= 10; i< 20; i++) {
-		Array[i] = new Cat();
+	std::cout << "--------------DEEP COPY---------------" << std::endl << std::endl;
+	{
+					
+		Dog basic;
+		{
+			std::cout << std::endl;
+			Dog tmp = basic;
+			std::cout << std::endl;
+		}
 	}
-	for (int i = 0; i < 20; i++) {
-   		delete Array[i];
+	std::cout << "--------------BRAIN---------------" << std::endl << std::endl;
+	{
+		// Default Constructor
+		Brain test();
+
+		// Copy constructor
+		Brain test2(Brain());
+
+		// Copy Assignment
+		Brain copy() = new Brain();
+		
+
 	}
-	
-	// Dog basic;
-	// {
-	// 	Dog tmp = basic;
-	// }
-	// return 0;
 }

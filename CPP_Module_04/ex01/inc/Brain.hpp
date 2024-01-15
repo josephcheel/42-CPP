@@ -2,7 +2,7 @@
 # define BRAIN_HPP
 
 # include <iostream>
-
+# include <array>
 class Brain {
 	
 	public:

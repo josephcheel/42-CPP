@@ -7,7 +7,7 @@ Brain::Brain()
 
 Brain::~Brain()
 {
-	std::cout << "Brain desctructor called" << std::endl;
+	std::cout << "Brain destructor called" << std::endl;
 }
 
 Brain::Brain(Brain const &copy) : ideas(copy.ideas)
