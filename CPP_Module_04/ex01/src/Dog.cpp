@@ -11,8 +11,9 @@ Dog::Dog::~Dog()
 	std::cout << "Dog destructor called" << std::endl;
 }
 
-Dog::Dog(Dog const &copy) : Animal(copy.type), DogBrain(new Brain())
+Dog::Dog(Dog const &copy) : Animal(copy.type)
 {
+	this->DogBrain = new Brain(*copy.DogBrain);
 	std::cout << "Dog copy constructor called" << std::endl;
 }
 
