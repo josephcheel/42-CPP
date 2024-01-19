@@ -13,7 +13,7 @@ class Brain {
 		
 		Brain &operator=(Brain const &copy); 
 	protected:
-		std::array<std::string, 100> ideas;
+		std::string ideas[100];
 };
 
 #endif
