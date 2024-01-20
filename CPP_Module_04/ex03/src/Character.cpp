@@ -2,11 +2,15 @@
 
 Character::Character() : _name("")
 {
+	for (int i = 0; i < 4; i++)
+		this->materias[i] = nullptr;
 	std::cout << "Character Default constructor called" << std::endl;
 }
 
 Character::Character(const std::string name) : _name(name)
 {
+	for (int i = 0; i < 4; i++)
+		this->materias[i] = nullptr;
 	std::cout << "Character constructor called" << std::endl;
 }
 

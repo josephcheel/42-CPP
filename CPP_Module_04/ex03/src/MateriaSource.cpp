@@ -2,6 +2,8 @@
 
 MateriaSource::MateriaSource()
 {
+	for (int i = 0; i < 4; ++i)
+		materias[i] = nullptr;
 	std::cout << "MateriaSource default constructor called" << std::endl;
 }
 
