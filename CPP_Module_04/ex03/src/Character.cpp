@@ -2,6 +2,7 @@
 
 Character::Character() : _name("")
 {
+	_nbrMateria	= 0;
 	for (int i = 0; i < 4; i++)
 		this->materias[i] = nullptr;
 	std::cout << "Character Default constructor called" << std::endl;
@@ -9,6 +10,7 @@ Character::Character() : _name("")
 
 Character::Character(const std::string name) : _name(name)
 {
+	_nbrMateria	= 0;
 	for (int i = 0; i < 4; i++)
 		this->materias[i] = nullptr;
 	std::cout << "Character constructor called" << std::endl;
@@ -16,7 +18,7 @@ Character::Character(const std::string name) : _name(name)
 
 Character::~Character()
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < _nbrMateria; i++)
 	{
 		if (this->materias[i])
 			delete (this->materias[i]);
@@ -24,8 +26,9 @@ Character::~Character()
 	std::cout << "Character destructor called" << std::endl;
 }
 		
-Character::Character(Character &copy) : _name(copy._name)
+Character::Character(Character &copy)
 {
+	*this = copy;
 	std::cout << "Character copy constuctor called" << std::endl;
 }
 
@@ -34,12 +37,20 @@ Character &Character::operator=(Character &copy)
 	std::cout << "Character copy assignment constuctor called" << std::endl;
 	if (this != &copy)
 	{
+		this->_nbrMateria = copy._nbrMateria;
 		this->_name = copy._name;
 		for (int i = 0; i < 4; i++)
 		{
 			if (this->materias[i])
+			{
 				delete (this->materias[i]);
-			this->materias[i] = copy.materias[i]->clone();
+				this->materias[i] = nullptr;
+			}
+		}
+		for (int i = 0; i < _nbrMateria; i++)
+		{
+				this->materias[i] = copy.materias[i]->clone();
+				// this->materias[i] = nullptr;
 		}
 	}
 	return (*this);
@@ -52,21 +63,23 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	for(int i = 0; i < 4; i++)
+	
+	if (_nbrMateria < 4 && m)
 	{
-		if (!materias[i])
-		{
-			materias[i] = m;
-			break ;
-		}
+		this->materias[_nbrMateria] = m;
+		_nbrMateria++;
 	}
+	else if (_nbrMateria == 4)
+		std::cout << "Character already has 4 materia" << std::endl;
 }
 void Character::unequip(int idx)
 {
-	if (materias[idx]->getType().empty())
+	if (idx <= _nbrMateria && idx >= 0 && idx < 4)
 	{
-		// materias[idx] = nullptr;
+		this->materias[idx] = nullptr;
 	}
+	else
+		std::cout << "No materia in this slot" << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)
@@ -77,4 +90,13 @@ void Character::use(int idx, ICharacter& target)
 	}
 	else
 		std::cout << "No materia in this slot" << std::endl;
+}
+
+void Character::printMaterias()
+{
+	std::cout << "Character " << _name << " has " << _nbrMateria << " materia(s)" << std::endl;
+	for (int i = 0; i < _nbrMateria; i++)
+	{
+		std::cout << "Materia " << i << " is of type " << this->materias[i]->getType() << std::endl;
+	}
 }
