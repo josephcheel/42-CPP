@@ -78,10 +78,10 @@ std::ostream& operator<<(std::ostream& stream, const Form &copy)
 
 const char * Form::GradeTooLowException::what() const throw()
 {
-	return ("Form: Grade Too Low");
+	return ("[GradeTooLowException]Form: Grade Too Low");
 }
 
 const char * Form::GradeTooHighException::what() const throw()
 {
-	return ("Form: Grade Too High");
+	return ("[GradeTooHighException: Grade Too High");
 }
