@@ -40,6 +40,6 @@ void	PresidentialPardonForm::execute(const Bureaucrat  &executor) const
 	if (!canExecute(executor))
 		return ;
 	else
-		std::cout << this->_target << " has been pardoned by  Zaphod Beeblebrox" << std::endl;
+		std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 	
 }
