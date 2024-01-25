@@ -9,10 +9,10 @@ class PresidentialPardonForm : public AForm{
 
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(std::string &target);
+		PresidentialPardonForm(std::string target);
 		~PresidentialPardonForm();
 
-		PresidentialPardonForm(PresidentialPardonForm &copy);
+		PresidentialPardonForm(const PresidentialPardonForm &copy);
 		const PresidentialPardonForm &operator=(const PresidentialPardonForm &copy);
 		void		execute(const Bureaucrat & executor ) const;
 		

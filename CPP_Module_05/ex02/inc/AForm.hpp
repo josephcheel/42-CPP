@@ -20,7 +20,7 @@ class AForm {
 		const AForm &operator=(const AForm &copy);
 
 		void	beSigned(class Bureaucrat & B);
-		bool 	canExecute(Bureaucrat const & executor) const;
+		bool	canExecute(Bureaucrat const & executor) const;
 		virtual void	execute(const Bureaucrat & executor) const = 0;
 
 		std::string	getName() const;

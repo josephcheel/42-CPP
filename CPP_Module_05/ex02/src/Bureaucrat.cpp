@@ -94,3 +94,12 @@ void	Bureaucrat::signForm(AForm &form)
 		throw AForm::GradeTooLowException();
 	}
 }
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	if (form.canExecute(*this))
+	{
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+		form.execute(*this);
+	}
+}
