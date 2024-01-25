@@ -6,6 +6,8 @@
 # include <exception>
 # include "Form.hpp"
 
+class Form;
+
 class Bureaucrat {
 
 	protected:
@@ -19,33 +21,25 @@ class Bureaucrat {
 		Bureaucrat(Bureaucrat &copy);
 		Bureaucrat &operator=(Bureaucrat const &copy);
 
-		std::string			getName() const;
-		int					getGrade() const;
-		void	incrementGrade();
-		void	decrementGrade();
-		void	signForm(class Form &form);
-		
+		std::string	getName() const;
+		int		getGrade() const;
+		void		incrementGrade();
+		void		decrementGrade();
+		void	signForm(Form &form);
+
 		class GradeTooHighException : public std::exception 
 		{
 			public:
-				virtual const char* what() const throw() 
-				{
-					return ("GradeTooHighException: Grade Too High");
-				}
+				virtual const char* what() const throw();
 		};
-		
+
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw() 
-				{
-					return ("GradeTooLowException: Grade Too Low");
-				}
+				virtual const char* what() const throw();
 		};
-
-
 };
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& copy);
 
-#endif
+#endif 

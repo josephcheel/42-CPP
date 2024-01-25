@@ -4,35 +4,89 @@
 
 int main()
 {
-	try
+	std::cout << "------------CLASS BASICS---------------" << std::endl << std::endl;
 	{
-		Bureaucrat Bureacrat1("1", 5);
-		Form Form1("Form1", 0, 5, 0);
-		Form Form2("Form2", 0, 7, 0);
+		//Default constructor
+		Form instance1;
 
-		std::cout << GREEN << Form1 << RESET << std::endl;
-		std::cout << BLUE << Form2 << RESET << std::endl;
+		// Parameter constructor
+		Form instance2("me", false, 10, 5);
 
-		Bureacrat1.signForm(Form1);
-		
-		std::cout << GREEN << Form1 << RESET << std::endl;
-		Form2.beSigned(Bureacrat1);
-		std::cout << BLUE << Form2 << RESET << std::endl;
+		// Copy constructor
+		Form instance3(instance2);
+
+		// Copy Assignment operator
+		instance1 = instance2;
+	
+		// Overload of the insertion («) operator
+		std::cout << instance1 << std::endl;
+		std::cout << instance2 << std::endl;
+		std::cout << instance1 << std::endl;
 	}
-	catch(Bureaucrat::GradeTooLowException& e)
+	std::cout << std::endl << "-----------CLASS GETTERS--------------" << std::endl << std::endl;
 	{
-		std::cerr << e.what() << '\n';
+		Form instance1("Fooorm", false, 10, 5);
+		std::cout << "Name: " << instance1.getName() << std::endl;
+		std::cout << "Grade: " << instance1.getSigned() << std::endl;
+		std::cout << "Grade: " << instance1.getGradeToSigned() << std::endl;
+		std::cout << "Grade: " << instance1.getGradeToExecute() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooHighException& e)
+	std::cout << std::endl << "-----------CLASS beSigned()--------------" << std::endl << std::endl;
 	{
-		std::cerr << e.what() << '\n';
+		Form instance1("BURRR", false, 10, 5);
+		Bureaucrat Bur("me", 10);
+
+		std::cout << BLUE << instance1 << RESET << std::endl;
+		std::cout << GREEN << Bur << RESET << std::endl;
+		instance1.beSigned(Bur);
+		std::cout << BLUE << instance1 << RESET << std::endl;
 	}
-	catch(Form::GradeTooLowException& e)
+	std::cout << std::endl << "-----------FORM CLASS EXCEPTIONS--------------" << std::endl << std::endl;
 	{
-		std::cerr << e.what() << '\n';
+		try
+		{
+			// Constructor Exception Too Low
+			Form instance("me", false, 152, 5);
+			// Constructor Exception Too High
+			Form instance2("me", false, 0, 5);
+
+			// Signed Too Low Exception
+			Bureaucrat Bur("me", 10);
+			Form instance3("me", false, 1, 5);
+			instance3.beSigned(Bur);
+		}
+		catch(Form::GradeTooHighException& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		catch(Form::GradeTooLowException& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
-	catch(Form::GradeTooHighException& e)
+	std::cout << std::endl << "-----------BUREACRAT CLASS signForm()--------------" << std::endl << std::endl;
 	{
-		std::cerr << e.what() << '\n';
+		try
+		{
+			// Simple Sign
+			Bureaucrat Bur("SimpleBur", 10);
+			Form instance("SuperForm", false, 10, 5);
+			std::cout << BLUE << instance << RESET << std::endl;
+			Bur.signForm(instance);
+			std::cout << GREEN << instance << RESET << std::endl;
+
+			// Simple Sign Grade Too Low
+			Bureaucrat Bur2("SimpleBur", 10);
+			Form instance2("SuperForm", false, 5, 5);
+			std::cout << BLUE << instance2 << RESET << std::endl;
+			Bur2.signForm(instance2);
+			std::cout << GREEN << instance2 << RESET << std::endl;
+			
+		}
+		catch(Form::GradeTooLowException& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
+	
 }

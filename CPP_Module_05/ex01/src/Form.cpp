@@ -11,7 +11,11 @@ _signed(Signed),
 _gradeToSigned(GradeToSigned),
 _gradeToExecute(GradeToExecute)
 {
-	std::cout << "Form constructor called" << std::endl;
+	if (GradeToSigned > 150 || GradeToExecute > 150)
+		throw Form::GradeTooLowException();
+	else if (GradeToSigned < 1 || GradeToExecute < 1)
+		throw Form::GradeTooHighException();
+	std::cout << "Form Parameter constructor called" << std::endl;
 }
 
 Form::~Form()
@@ -70,4 +74,14 @@ std::ostream& operator<<(std::ostream& stream, const Form &copy)
 	stream << "Grade to Signed: " << copy.getGradeToSigned();
 	stream << ". Grade to Execute: " << copy.getGradeToExecute();
 	return (stream); 
+}
+
+const char * Form::GradeTooLowException::what() const throw()
+{
+	return ("Form: Grade Too Low");
+}
+
+const char * Form::GradeTooHighException::what() const throw()
+{
+	return ("Form: Grade Too High");
 }
