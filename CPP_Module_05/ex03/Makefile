@@ -1,4 +1,4 @@
-NAME = Form
+NAME = Intern
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow 
 DEPFLAGS	= -MMD -MP
@@ -8,7 +8,8 @@ MD			= mkdir -p
 CP			= cp -f
 CC			= c++
 
-SRC	=	main.cpp Bureaucrat.cpp Form.cpp \
+SRC	=	main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp \
+		RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp\
 
 
 SRC_DIR = src/
