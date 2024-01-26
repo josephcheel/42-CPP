@@ -95,15 +95,15 @@ bool	isFloat(std::string str)
 
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (!str[i])
+		return (false);
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
 	if (str[i] == '.')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if (!str[i])
-		return (true);
-	if (str[i] == 'f')
+	if (!str[i] || str[i] == 'f')
 		return (true);
 	return (false);
 }
@@ -139,14 +139,14 @@ char	ScalarConverter::convertChar(std::string str)
 
 int		ScalarConverter::convertInt(std::string str)
 {
-	if (str.length() >= 1 && isInt(str) == true)
+	if (str.length() >= 1 && isFloat(str) == true)
 	{
 		double tmp = std::stod(str);
 
 		if (tmp >= std::numeric_limits<int>::max() || tmp <= std::numeric_limits<int>::min())
 			return (0);
 		else
-			return(()std::stoi(str));
+			return(std::stoi(str));
 	}
 	else
 		return (0);
@@ -167,7 +167,7 @@ float	ScalarConverter::convertFloat(std::string str)
 
 double	ScalarConverter::convertDouble(std::string str)
 {
-	if (str.length() >= 1 && isDouble(str) == true)
+	if (str.length() >= 1 && isFloat(str) == true)
 	{
 		return(std::stod(str));
 	}
