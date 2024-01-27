@@ -156,7 +156,12 @@ float	ScalarConverter::convertFloat(std::string str)
 {
 	if (str.length() >= 1 && isFloat(str) == true)
 	{
-		float tmp = std::stof(str);
+		if (str[str.length() - 1] == 'f')
+			str.erase(str.length() - 1, 1);
+		// float tmp = std::stof(str);
+		std::istringstream iss(str);
+		float tmp;
+		iss >> tmp;
 		if (tmp >= std::numeric_limits<float>::max() || tmp <= std::numeric_limits<float>::min())
 			return (0);
 		return(std::stof(str));
@@ -169,6 +174,13 @@ double	ScalarConverter::convertDouble(std::string str)
 {
 	if (str.length() >= 1 && isFloat(str) == true)
 	{
+		if (str[str.length() - 1] == 'f')
+			str.erase(str.length() - 1, 1);
+		std::istringstream iss(str);
+		double tmp;
+		iss >> tmp;
+		if (tmp >= std::numeric_limits<double>::max() || tmp <= std::numeric_limits<double>::min())
+			return (0);
 		return(std::stod(str));
 	}
 	else

@@ -2,6 +2,8 @@
 # define SCALAVAR_CONVERTER_HPP
 
 # include <iostream>
+# include <limits>
+# include <sstream>
 
 class ScalarConverter
 {
