@@ -1,5 +1,6 @@
 #include <iostream>
-#include <Array.hpp>
+#include <../inc/Array.hpp>
+#include <../inc/Array.tpp>
 
 #define MAX_VAL 750
 int main(int, char**)
