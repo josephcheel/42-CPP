@@ -120,14 +120,15 @@ bool	isDouble(std::string str)
 	return (false);
 }
 
-char	ScalarConverter::convertChar(std::string str)
+unsigned char	ScalarConverter::convertChar(std::string str)
 {
 
 	if (str.length() >= 1)
 	{
 		double tmp = std::stod(str);
-		if (std::isprint(tmp) != 0)
-			return((char)tmp);
+		unsigned char c = static_cast<unsigned char>(tmp);
+		if (std::isprint(c) != 0)
+			return(c);
 	}
 	return (0);
 }
@@ -138,10 +139,11 @@ int		ScalarConverter::convertInt(std::string str)
 	{
 		double tmp = std::stod(str);
 
+		int out = static_cast<int>(tmp);
 		if (tmp >= std::numeric_limits<int>::max() || tmp <= std::numeric_limits<int>::min())
 			return (0);
 		else
-			return(std::stoi(str));
+			return(out);
 	}
 	else
 		return (0);
@@ -154,15 +156,15 @@ float	ScalarConverter::convertFloat(std::string str)
 		
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
-		std::istringstream iss(str);
-		float tmp;
-		iss >> tmp;
+		float tmp = std::stof(str);
 		
+		std::istringstream iss(str);
+		iss >> tmp;
 		if (tmp >= std::numeric_limits<float>::max() || tmp <= -std::numeric_limits<float>::max())
 		{
 			return (0);
 		}
-		return(std::stof(str));
+		return(static_cast<float>(tmp));
 	}
 	else
 		return (0);
