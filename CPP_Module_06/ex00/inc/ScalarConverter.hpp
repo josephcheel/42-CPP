@@ -21,7 +21,6 @@ class ScalarConverter
 		static int		convertInt(std::string str);
 		static float	convertFloat(std::string str);
 		static double	convertDouble(std::string str);
-
 		std::string			_str;
 };
 
