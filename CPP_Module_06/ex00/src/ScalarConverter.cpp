@@ -57,9 +57,7 @@ void	ScalarConverter::convert(std::string const & str)
 	else
 		std::cout << "int: " << i << std::endl;
 	
-	// std::cout << "CONVERTED F"<< f << std::endl;
-	// std::cout << "CONVERTED STOD" << std::stod(str) << std::endl;
-	if (f == 0 && str.length() >= 1 && std::stod(str) != 0)
+	if ((f == 0 && str.length() >= 1 && std::stod(str) != 0))
 		std::cout << "float: impossible" << std::endl;
 	else
 		std::cout << "float: " << std::fixed << f <<  "f" << std::endl;
@@ -68,9 +66,6 @@ void	ScalarConverter::convert(std::string const & str)
 		std::cout << "double: impossible" << std::endl;
 	else
 		std::cout << "double: " << std::fixed << d << std::endl;
-	// std::cout << "int: " << this->convertInt(str) << std::endl;
-	// std::cout << "float: " << this->convertFloat(str) << std::endl;
-	// std::cout << "double: " << this->convertDouble(str) << std::endl;
 }
 
 
@@ -156,14 +151,17 @@ float	ScalarConverter::convertFloat(std::string str)
 {
 	if (str.length() >= 1 && isFloat(str) == true)
 	{
+		
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
-		// float tmp = std::stof(str);
 		std::istringstream iss(str);
 		float tmp;
 		iss >> tmp;
-		if (tmp >= std::numeric_limits<float>::max() || tmp <= std::numeric_limits<float>::min())
+		
+		if (tmp >= std::numeric_limits<float>::max() || tmp <= -std::numeric_limits<float>::max())
+		{
 			return (0);
+		}
 		return(std::stof(str));
 	}
 	else
@@ -179,7 +177,7 @@ double	ScalarConverter::convertDouble(std::string str)
 		std::istringstream iss(str);
 		double tmp;
 		iss >> tmp;
-		if (tmp >= std::numeric_limits<double>::max() || tmp <= std::numeric_limits<double>::min())
+		if (tmp >= std::numeric_limits<double>::max() || tmp <= -std::numeric_limits<double>::max())
 			return (0);
 		return(std::stod(str));
 	}

@@ -15,13 +15,13 @@ class ScalarConverter
 		~ScalarConverter(void);
 		ScalarConverter &	operator=(ScalarConverter const & rhs);
 
-		void	convert(std::string const & str);
+		static  void	convert(std::string const & str);
 
 	private:
-		char	convertChar(std::string str);
-		int		convertInt(std::string str);
-		float	convertFloat(std::string str);
-		double	convertDouble(std::string str);
+		static char	convertChar(std::string str);
+		static int		convertInt(std::string str);
+		static float	convertFloat(std::string str);
+		static double	convertDouble(std::string str);
 
 		std::string			_str;
 };
