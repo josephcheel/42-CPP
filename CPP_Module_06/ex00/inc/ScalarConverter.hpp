@@ -8,6 +8,8 @@
 class ScalarConverter
 {
 	public:
+		static  void	convert(std::string const & str);
+	private:
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter const & src);
 		ScalarConverter(std::string str);
@@ -15,9 +17,6 @@ class ScalarConverter
 		~ScalarConverter(void);
 		ScalarConverter &	operator=(ScalarConverter const & rhs);
 
-		static  void	convert(std::string const & str);
-
-	private:
 		static char	convertChar(std::string str);
 		static int		convertInt(std::string str);
 		static float	convertFloat(std::string str);
