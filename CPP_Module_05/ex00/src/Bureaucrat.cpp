@@ -31,9 +31,9 @@ Bureaucrat::Bureaucrat(Bureaucrat &copy) : _name(copy._name), _grade( copy._grad
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &copy)
 {
+	std::cout << "Bureaucrat copy operator assignment called" << std::endl;
 	if (this != &copy)
 	{
-		// _name = copy.getName();
 		_grade = copy.getGrade();
 	}
 	return (*this);

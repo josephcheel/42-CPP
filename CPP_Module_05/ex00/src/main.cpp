@@ -19,13 +19,7 @@ int main()
 		// Overload of the insertion («) operator
 		std::cout << instance1 << std::endl;
 		std::cout << instance2 << std::endl;
-		std::cout << instance1 << std::endl;
-	}
-	std::cout << std::endl << "-----------CLASS GETTERS--------------" << std::endl << std::endl;
-	{
-		Bureaucrat instance1("burrrrreeeacraat", 150);
-		std::cout << "Name: " << instance1.getName() << std::endl;
-		std::cout << "Grade: " << instance1.getGrade() << std::endl;
+		std::cout << instance3 << std::endl;
 	}
 	std::cout << std::endl << "-----------CLASS GETTERS--------------" << std::endl << std::endl;
 	{
