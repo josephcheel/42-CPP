@@ -1,4 +1,4 @@
-NAME = ScalarConversion
+NAME = Serialize
 
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow 
 DEPFLAGS	= -MMD -MP

@@ -27,9 +27,9 @@ int main()
 	{
 		Form instance1("Fooorm", false, 10, 5);
 		std::cout << "Name: " << instance1.getName() << std::endl;
-		std::cout << "Grade: " << instance1.getSigned() << std::endl;
-		std::cout << "Grade: " << instance1.getGradeToSigned() << std::endl;
-		std::cout << "Grade: " << instance1.getGradeToExecute() << std::endl;
+		std::cout << "is Signed:\t\t" << std::boolalpha << instance1.getSigned() << std::endl;
+		std::cout << "Grade to Sign:\t\t" << instance1.getGradeToSigned() << std::endl;
+		std::cout << "Grade to Execute:\t" << instance1.getGradeToExecute() << std::endl;
 	}
 	std::cout << std::endl << "-----------CLASS beSigned()--------------" << std::endl << std::endl;
 	{

@@ -31,43 +31,21 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const & copy)
 	return (*this);
 }
 
-void	ScalarConverter::convert(std::string const & str)
+bool	isallprint(std::string str)
 {
-	char c = convertChar(str);
-	int i = convertInt(str);
-	float f = convertFloat(str);
-	double d = convertDouble(str);
+	int			nbr;
+	std::string ret;
 
-	if (str == "nan" || str == "nanf")
+	nbr = 0;
+	for (int x = 0; x < static_cast<int>(str.length()); x++)
 	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: nanf" << std::endl;
-		std::cout << "double: nan" << std::endl;
-		return ;
+		if (std::isalpha(static_cast<char>(str[x])))
+			nbr++;
 	}
-
-	if (c == 0)
-		std::cout << "char: Non displayable" << std::endl;
-	else
-		std::cout << "char: " << c << std::endl;
-	
-	if (i == 0 && str.length() >= 1 && std::stod(str) != 0)
-		std::cout << "int: impossible" << std::endl;
-	else
-		std::cout << "int: " << i << std::endl;
-	
-	if ((f == 0 && str.length() >= 1 && std::stod(str) != 0))
-		std::cout << "float: impossible" << std::endl;
-	else
-		std::cout << "float: " << std::fixed << f <<  "f" << std::endl;
-
-	if (d == 0 && str.length() >= 1 && std::stod(str) != 0)
-		std::cout << "double: impossible" << std::endl;
-	else
-		std::cout << "double: " << std::fixed << d << std::endl;
+	if (!nbr)
+		return (false);
+	return (true);
 }
-
 
 bool	isInt(std::string str)
 {
@@ -98,7 +76,7 @@ bool	isFloat(std::string str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if (!str[i] || str[i] == 'f')
+	if (!str[i] || (str[i] == 'f' && str[i -1] == 'f'))
 		return (true);
 	return (false);
 }
@@ -120,10 +98,47 @@ bool	isDouble(std::string str)
 	return (false);
 }
 
+void	ScalarConverter::convert(std::string const & str)
+{
+	char c = convertChar(str);
+	int i = convertInt(str);
+	float f = convertFloat(str);
+	double d = convertDouble(str);
+
+	if (str == "nan" || str == "nanf" || isallprint(str) || !isDouble(str))
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+		return ;
+	}
+
+	if (c == 0)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << c << std::endl;
+	
+	if (i == 0 && str.length() >= 1 && !isallprint(str) && std::stod(str) != 0)
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
+	
+	if ((f == 0 && str.length() >= 1 &&  !isallprint(str) && std::stod(str) != 0))
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << f <<  "f" << std::endl;
+
+	if (d == 0 && str.length() >= 1 && !isallprint(str) && std::stod(str) != 0)
+		std::cout << "double: impossible" << std::endl;
+	else
+		std::cout << "double: " << std::fixed << d << std::endl;
+}
+
 unsigned char	ScalarConverter::convertChar(std::string str)
 {
 
-	if (str.length() >= 1)
+	if (str.length() >= 1 && !isallprint(str))
 	{
 		double tmp = std::stod(str);
 		unsigned char c = static_cast<unsigned char>(tmp);
@@ -135,7 +150,7 @@ unsigned char	ScalarConverter::convertChar(std::string str)
 
 int		ScalarConverter::convertInt(std::string str)
 {
-	if (str.length() >= 1 && isFloat(str) == true)
+	if (str.length() >= 1 && !isallprint(str) && isFloat(str) == true )
 	{
 		double tmp = std::stod(str);
 
@@ -151,7 +166,7 @@ int		ScalarConverter::convertInt(std::string str)
 
 float	ScalarConverter::convertFloat(std::string str)
 {
-	if (str.length() >= 1 && isFloat(str) == true)
+	if (str.length() >= 1  && !isallprint(str) && isFloat(str) == true)
 	{
 		
 		if (str[str.length() - 1] == 'f')
@@ -172,7 +187,7 @@ float	ScalarConverter::convertFloat(std::string str)
 
 double	ScalarConverter::convertDouble(std::string str)
 {
-	if (str.length() >= 1 && isFloat(str) == true)
+	if (str.length() >= 1  && !isallprint(str) && isFloat(str) == true)
 	{
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
