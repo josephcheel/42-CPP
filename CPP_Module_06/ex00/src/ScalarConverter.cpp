@@ -31,22 +31,6 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const & copy)
 	return (*this);
 }
 
-bool	isallprint(std::string str)
-{
-	int			nbr;
-	std::string ret;
-
-	nbr = 0;
-	for (int x = 0; x < static_cast<int>(str.length()); x++)
-	{
-		if (std::isalpha(static_cast<char>(str[x])))
-			nbr++;
-	}
-	if (!nbr)
-		return (false);
-	return (true);
-}
-
 bool	isInt(std::string str)
 {
 	int i = 0;
@@ -76,36 +60,15 @@ bool	isFloat(std::string str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if (!str[i] || (str[i] == 'f' && str[i -1] == 'f'))
-		return (true);
-	return (false);
-}
-
-bool	isDouble(std::string str)
-{
-	int i = 0;
-
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	if (str[i] == '.')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-		i++;
-	if (!str[i])
+	if (!str[i] || (str[i] == 'f' && i == static_cast<int>(str.length() - 1)))
 		return (true);
 	return (false);
 }
 
 void	ScalarConverter::convert(std::string const & str)
 {
-	char c = convertChar(str);
-	int i = convertInt(str);
-	float f = convertFloat(str);
-	double d = convertDouble(str);
-
-	if (str == "nan" || str == "nanf" || isallprint(str) || !isDouble(str))
+	// std::cout << std::boolalpha << isFloat(str) << std::endl;
+	if (str == "nan" || str == "nanf" || !isFloat(str))
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -113,32 +76,33 @@ void	ScalarConverter::convert(std::string const & str)
 		std::cout << "double: nan" << std::endl;
 		return ;
 	}
+	char c = convertChar(str);
+	int i = convertInt(str);
+	float f = convertFloat(str);
+	double d = convertDouble(str);
 
 	if (c == 0)
-		std::cout << "char: Non displayable" << std::endl;
+		std::cout << "char:\t\tNon displayable" << std::endl;
 	else
-		std::cout << "char: " << c << std::endl;
+		std::cout << "char:\t\t" << c << std::endl;
 	
-	if (i == 0 && str.length() >= 1 && !isallprint(str) && std::stod(str) != 0)
-		std::cout << "int: impossible" << std::endl;
+	if (i == 0 && str.length() >= 10)
+		std::cout << "int:\t\timpossible" << std::endl;
 	else
-		std::cout << "int: " << i << std::endl;
+	std::cout << "int:\t\t" << i << std::endl;
 	
-	if ((f == 0 && str.length() >= 1 &&  !isallprint(str) && std::stod(str) != 0))
-		std::cout << "float: impossible" << std::endl;
+	if (f == 0 && str.length() > 1)
+		std::cout << "float:\t\timpossible" << std::endl;
 	else
-		std::cout << "float: " << std::fixed << f <<  "f" << std::endl;
+	std::cout << "float:\t\t" << std::setprecision(1) << std::fixed << f <<  "f" << std::endl;
 
-	if (d == 0 && str.length() >= 1 && !isallprint(str) && std::stod(str) != 0)
-		std::cout << "double: impossible" << std::endl;
-	else
-		std::cout << "double: " << std::fixed << d << std::endl;
+	std::cout << "double:\t\t" << std::setprecision(1) << std::fixed << d << std::endl;
 }
 
 unsigned char	ScalarConverter::convertChar(std::string str)
 {
 
-	if (str.length() >= 1 && !isallprint(str))
+	if (str.length() >= 1 && isFloat(str) == true)
 	{
 		double tmp = std::stod(str);
 		unsigned char c = static_cast<unsigned char>(tmp);
@@ -150,7 +114,7 @@ unsigned char	ScalarConverter::convertChar(std::string str)
 
 int		ScalarConverter::convertInt(std::string str)
 {
-	if (str.length() >= 1 && !isallprint(str) && isFloat(str) == true )
+	if (str.length() >= 1 && isFloat(str) == true)
 	{
 		double tmp = std::stod(str);
 
@@ -166,12 +130,12 @@ int		ScalarConverter::convertInt(std::string str)
 
 float	ScalarConverter::convertFloat(std::string str)
 {
-	if (str.length() >= 1  && !isallprint(str) && isFloat(str) == true)
+	if (str.length() >= 1  && isFloat(str) == true)
 	{
 		
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
-		float tmp = std::stof(str);
+		float tmp = std::stod(str);
 		
 		std::istringstream iss(str);
 		iss >> tmp;
@@ -187,7 +151,7 @@ float	ScalarConverter::convertFloat(std::string str)
 
 double	ScalarConverter::convertDouble(std::string str)
 {
-	if (str.length() >= 1  && !isallprint(str) && isFloat(str) == true)
+	if (str.length() >= 1  && isFloat(str) == true)
 	{
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
