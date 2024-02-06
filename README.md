@@ -17,7 +17,7 @@
 |  [Module 02](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_02)  | Ad-hoc polymorphism, operator overloading and Orthodox Canonical class form                                     | **100** |
 |  [Module 03](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_03)  | Inheritance                                                                                                     | **100** |
 |  [Module 04](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_04)  | Subtype polymorphism, abstract classes, interfaces                                                              | **85** |
-|  [Module 05](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_05)  | Repetition and Exceptions                                                                                       | **TBD** |
+|  [Module 05](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_05)  | Repetition and Exceptions                                                                                       | **100** |
 |  [Module 06](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_06)  | C++ casts                                                                                                       | **TBD** |
 |  [Module 07](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_07)  | C++ templates                                                                                                   | **TBD** |
 |  [Module 08](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_08)  | Templated containers, iterators, algorithms                                                                     | **TBD** |
