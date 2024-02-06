@@ -29,7 +29,7 @@ $(OBJ_DIR)%.o: %.cpp Makefile
 all: ${NAME}
 
 ${NAME}: $(OBJS)
-	@$(CC) $(CFLAGS) $(DEBFLAGS) $(INCLUDE) -o $@ $^ $(LIBS)
+	@$(CC) $(CPPFLAGS) $(DEBFLAGS) $(INCLUDE) -o $@ $^ $(LIBS)
 	@echo "$(OK_COLOR)$(NAME) compiled!$(NO_COLOR)"
 
 clean:
