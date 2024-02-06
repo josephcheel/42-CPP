@@ -8,7 +8,7 @@ MD			= mkdir -p
 CP			= cp -f
 CC			= c++
 
-SRC	=	main.cpp Serializer.cpp
+SRC	=	main.cpp Serializer.cpp Data.cpp
 
 
 SRC_DIR = src/

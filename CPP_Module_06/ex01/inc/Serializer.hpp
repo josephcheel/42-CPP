@@ -19,7 +19,7 @@ class Serializer
 		Serializer(std::string str);
 
 		~Serializer(void);
-		Serializer &	operator=(Serializer const & rhs);
+		Serializer &operator=(Serializer const & copy);
 };
 
 #endif

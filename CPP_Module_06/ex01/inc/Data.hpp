@@ -1,21 +1,21 @@
 #ifndef DATA_HPP
 # define DATA_HPP
 
+# include <iostream>
+
+
 class Data {
 
 	public:
-		// Data();
-		// Data(Data const & src);
-
-		// ~Data();
-		// Data &	operator=(Data const & rhs);
 		char	c;
 		int		i;
 		float	f;
 		double	d;
-		
+		Data();
+		~Data();
 	private:
-		
+		Data(Data const & src);
+		Data &	operator=(Data const & copy);
 };
 
 #endif
