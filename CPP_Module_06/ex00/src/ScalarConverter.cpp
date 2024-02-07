@@ -65,10 +65,17 @@ bool	isFloat(std::string str)
 	return (false);
 }
 
+bool	isChar(std::string str)
+{
+	if (str.length() == 1 && std::isprint(str[0]) && !std::isdigit(str[0]))
+		return (true);
+	return (false);
+}
+
 void	ScalarConverter::convert(std::string const & str)
 {
 	// std::cout << std::boolalpha << isFloat(str) << std::endl;
-	if (str == "nan" || str == "nanf" || !isFloat(str))
+	if (str == "nan" || str == "nanf" || (!isFloat(str) && !isChar(str)))
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -101,7 +108,8 @@ void	ScalarConverter::convert(std::string const & str)
 
 unsigned char	ScalarConverter::convertChar(std::string str)
 {
-
+	if (isChar(str))
+		return (static_cast<char>(str[0]));
 	if (str.length() >= 1 && isFloat(str) == true)
 	{
 		double tmp = std::stod(str);
@@ -114,6 +122,8 @@ unsigned char	ScalarConverter::convertChar(std::string str)
 
 int		ScalarConverter::convertInt(std::string str)
 {
+	if (isChar(str))
+		return (static_cast<int>(str[0]));
 	if (str.length() >= 1 && isFloat(str) == true)
 	{
 		double tmp = std::stod(str);
@@ -130,6 +140,8 @@ int		ScalarConverter::convertInt(std::string str)
 
 float	ScalarConverter::convertFloat(std::string str)
 {
+	if (isChar(str))
+		return (static_cast<float>(str[0]));
 	if (str.length() >= 1  && isFloat(str) == true)
 	{
 		
@@ -151,6 +163,8 @@ float	ScalarConverter::convertFloat(std::string str)
 
 double	ScalarConverter::convertDouble(std::string str)
 {
+	if (isChar(str))
+		return (static_cast<double>(str[0]));
 	if (str.length() >= 1  && isFloat(str) == true)
 	{
 		if (str[str.length() - 1] == 'f')
