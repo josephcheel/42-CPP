@@ -9,7 +9,7 @@
 class ScalarConverter
 {
 	public:
-		static  void	convert(std::string const & str);
+		static  void	convert(std::string str);
 	private:
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter const & src);
