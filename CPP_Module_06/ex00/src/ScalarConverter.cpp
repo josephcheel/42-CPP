@@ -80,6 +80,8 @@ void	ScalarConverter::convert(std::string str)
 	// std::cout << str << std::endl;
 	// std::cout << std::fixed << std::atol(STRING) << std::endl;
 	std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
+	std::cout << std::endl << std::fixed << std::numeric_limits<float>::max() << std::endl << std::endl;
+	std::cout << std::endl << std::fixed << std::numeric_limits<float>::min() << std::endl << std::endl;
 	// std::cout << std::fixed << std::atof(STRING) << std::endl;
 	if (str == "nan" || str == "nanf" || (!isFloat(str) && !isChar(str)))
 	{
@@ -125,6 +127,8 @@ unsigned char	ScalarConverter::convertChar(std::string str)
 	if (str.length() >= 1  && str.length() <= 3 && isFloat(str) == true )
 	{
 		double tmp = std::atof(str.c_str());
+		if (tmp > std::numeric_limits<unsigned char>::max())
+			return (0);
 		unsigned char c = static_cast<unsigned char>(tmp);
 		if (std::isprint(c) != 0)
 			return(c);
@@ -140,10 +144,10 @@ int		ScalarConverter::convertInt(std::string str)
 	{
 		double tmp = std::atof(str.c_str());
 
-		if (tmp >= std::numeric_limits<double>::max() || tmp <= std::numeric_limits<double>::min())
+		if (tmp > std::numeric_limits<int>::max() || tmp < std::numeric_limits<int>::min())
 			return (0);
 		else
-			return(static_cast<char>(tmp));
+			return(static_cast<int>(tmp));
 	}
 	else
 		return (0);
@@ -160,12 +164,12 @@ float	ScalarConverter::convertFloat(std::string str)
 			str.erase(str.length() - 1, 1);
 		float tmp = std::atof(str.c_str());
 		
-		std::istringstream iss(str.c_str());
-		iss >> tmp;
-		if (tmp >= std::numeric_limits<float>::max() || tmp <= -std::numeric_limits<float>::max())
+		// std::istringstream iss(str.c_str());
+		// iss >> tmp;
+		if (tmp > std::numeric_limits<float>::max() || tmp < std::numeric_limits<float>::min())
 			return (0);
-		if (tmp >= std::numeric_limits<float>::max() || tmp <= -std::numeric_limits<float>::max())
-			return (0);
+		// if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
+		// 	return (0);
 		return(static_cast<float>(tmp));
 	}
 	else
@@ -183,7 +187,7 @@ double	ScalarConverter::convertDouble(std::string str)
 		std::istringstream iss(str);
 		double tmp;
 		iss >> tmp;
-		if (tmp >= std::numeric_limits<double>::max() || tmp <= -std::numeric_limits<double>::max())
+		if (tmp > std::numeric_limits<double>::max() || tmp < -std::numeric_limits<double>::max())
 			return (0);
 		return(std::atof(str.c_str()));
 	}
