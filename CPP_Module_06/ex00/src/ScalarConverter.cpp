@@ -74,7 +74,7 @@ bool	isChar(std::string str)
 
 void	ScalarConverter::convert(std::string str)
 {
-	// std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
+	 std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
 	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::max() << std::endl << std::endl;
 	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::min() << std::endl << std::endl;
 
@@ -137,7 +137,7 @@ void	ScalarConverter::convert(std::string str)
 	else
 		std::cout << "float:\t\t" << std::setprecision(1) << std::fixed << f <<  "f" << std::endl;
 
-	if (d == 0 && str.length() > 310)
+	if (d == 0 && str.length() > 309)
 		std::cout << "double:\t\timpossible" << std::endl;
 	else
 		std::cout << "double:\t\t" << std::setprecision(1) << std::fixed << d << std::endl;
@@ -187,12 +187,8 @@ float	ScalarConverter::convertFloat(std::string str)
 			str.erase(str.length() - 1, 1);
 		float tmp = std::atof(str.c_str());
 		
-		// std::istringstream iss(str.c_str());
-		// iss >> tmp;
 		if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
 			return (0);
-		// if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
-		// 	return (0);
 		return(static_cast<float>(tmp));
 	}
 	else
@@ -207,12 +203,10 @@ double	ScalarConverter::convertDouble(std::string str)
 	{
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
-		std::istringstream iss(str);
-		double tmp;
-		iss >> tmp;
+		double tmp = std::atof(str.c_str());
 		if (tmp > std::numeric_limits<double>::max() || tmp < -std::numeric_limits<double>::max())
 			return (0);
-		return((double)std::atof(str.c_str()));
+		return(static_cast<double>(std::atof(str.c_str())));
 	}
 	else
 		return (0);
