@@ -74,16 +74,17 @@ bool	isChar(std::string str)
 
 void	ScalarConverter::convert(std::string str)
 {
-	// std::cout << std::boolalpha << isFloat(str) << std::endl;
-	// const char *STRING = str.c_str();
+	// std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
+	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::max() << std::endl << std::endl;
+	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::min() << std::endl << std::endl;
 
-	// std::cout << str << std::endl;
-	// std::cout << std::fixed << std::atol(STRING) << std::endl;
-	std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
-	std::cout << std::endl << std::fixed << std::numeric_limits<float>::max() << std::endl << std::endl;
-	std::cout << std::endl << std::fixed << std::numeric_limits<float>::min() << std::endl << std::endl;
-	// std::cout << std::fixed << std::atof(STRING) << std::endl;
-	if (str == "nan" || str == "nanf" || (!isFloat(str) && !isChar(str)))
+	//  double positive_infinity = std::numeric_limits<float>::infinity();
+    // double negative_infinity = -std::numeric_limits<double>::infinity();
+
+    // std::cout << "Positive Infinity: " << positive_infinity << std::endl;
+    // std::cout << "Negative Infinity: " << negative_infinity << std::endl;
+
+	if (str == "nan" || str == "nanf" || std::isnan(std::atof(str.c_str())))
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -91,16 +92,35 @@ void	ScalarConverter::convert(std::string str)
 		std::cout << "double: nan" << std::endl;
 		return ;
 	}
+	else if (str == "+inff" || str == "+inf" )
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+		return ;
+	}
+	else if (str == "-inff" || str == "-inf" )
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+		return ;
+	}
+	else if ((!isFloat(str) && !isChar(str)))
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+		return ;
+	}
 
-	
-	// return ;
-	double d = convertDouble(str);
-	// return ;
 	char c = convertChar(str);
 	int i = convertInt(str);
-	
 	float f = convertFloat(str);
-	// double d = convertDouble(str);
+	double d = convertDouble(str);
 
 	if (c == 0)
 		std::cout << "char:\t\tNon displayable" << std::endl;
@@ -112,12 +132,15 @@ void	ScalarConverter::convert(std::string str)
 	else
 	std::cout << "int:\t\t" << i << std::endl;
 	
-	if (f == 0 && str.length() > 1)
+	if (f == 0 && str.length() > 46)
 		std::cout << "float:\t\timpossible" << std::endl;
 	else
-	std::cout << "float:\t\t" << std::setprecision(1) << std::fixed << f <<  "f" << std::endl;
+		std::cout << "float:\t\t" << std::setprecision(1) << std::fixed << f <<  "f" << std::endl;
 
-	std::cout << "double:\t\t" << std::setprecision(1) << std::fixed << d << std::endl;
+	if (d == 0 && str.length() > 310)
+		std::cout << "double:\t\timpossible" << std::endl;
+	else
+		std::cout << "double:\t\t" << std::setprecision(1) << std::fixed << d << std::endl;
 }
 
 unsigned char	ScalarConverter::convertChar(std::string str)
@@ -166,7 +189,7 @@ float	ScalarConverter::convertFloat(std::string str)
 		
 		// std::istringstream iss(str.c_str());
 		// iss >> tmp;
-		if (tmp > std::numeric_limits<float>::max() || tmp < std::numeric_limits<float>::min())
+		if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
 			return (0);
 		// if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
 		// 	return (0);
@@ -189,7 +212,7 @@ double	ScalarConverter::convertDouble(std::string str)
 		iss >> tmp;
 		if (tmp > std::numeric_limits<double>::max() || tmp < -std::numeric_limits<double>::max())
 			return (0);
-		return(std::atof(str.c_str()));
+		return((double)std::atof(str.c_str()));
 	}
 	else
 		return (0);
