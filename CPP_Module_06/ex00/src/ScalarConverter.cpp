@@ -74,7 +74,7 @@ bool	isChar(std::string str)
 
 void	ScalarConverter::convert(std::string str)
 {
-	 std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
+	// std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
 	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::max() << std::endl << std::endl;
 	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::min() << std::endl << std::endl;
 
@@ -83,7 +83,6 @@ void	ScalarConverter::convert(std::string str)
 
     // std::cout << "Positive Infinity: " << positive_infinity << std::endl;
     // std::cout << "Negative Infinity: " << negative_infinity << std::endl;
-
 	if (str == "nan" || str == "nanf" || std::isnan(std::atof(str.c_str())))
 	{
 		std::cout << "char: impossible" << std::endl;
@@ -132,7 +131,7 @@ void	ScalarConverter::convert(std::string str)
 	else
 	std::cout << "int:\t\t" << i << std::endl;
 	
-	if (f == 0 && str.length() > 46)
+	if (f == 0 && str.length() > 39)
 		std::cout << "float:\t\timpossible" << std::endl;
 	else
 		std::cout << "float:\t\t" << std::setprecision(1) << std::fixed << f <<  "f" << std::endl;
@@ -187,6 +186,9 @@ float	ScalarConverter::convertFloat(std::string str)
 			str.erase(str.length() - 1, 1);
 		float tmp = std::atof(str.c_str());
 		
+		// std::cout << tmp << std::endl;
+		if (std::isinf(tmp))
+			return (std::numeric_limits<float>::infinity());
 		if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
 			return (0);
 		return(static_cast<float>(tmp));
