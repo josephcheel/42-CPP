@@ -13,7 +13,6 @@ class Data {
 		double	d;
 		Data();
 		~Data();
-	private:
 		Data(Data const & src);
 		Data &	operator=(Data const & copy);
 };
