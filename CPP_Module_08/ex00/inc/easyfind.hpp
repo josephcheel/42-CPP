@@ -4,11 +4,11 @@
 # include <array>
 
 template<typename T>
-int		*easyfind(T, int find)
-{
-	std::iterator
-}
+typename T::iterator easyfind(T &container, int find);
 
-
+class IntergerNotFound : public std::exception {
+	public:
+		virtual const char * what() const throw();
+};
 
 #endif

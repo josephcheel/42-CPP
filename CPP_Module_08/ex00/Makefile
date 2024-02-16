@@ -8,8 +8,7 @@ MD			= mkdir -p
 CP			= cp -f
 CC			= c++
 
-SRC	=	main.cpp
-
+SRC	=	main.cpp 
 
 SRC_DIR = src/
 OBJ_DIR = obj/
