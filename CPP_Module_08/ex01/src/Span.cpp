@@ -12,14 +12,17 @@ Span::Span(unsigned int N) : _MaxSize(N)
 		
 Span::Span(const Span &copy)
 {
+	std::cout << "Span Copy Constructor called" << std::endl;
 	*this = copy;
 }
 
 Span &Span::operator=(const Span &copy)
 {
+	std::cout << "Span Copy Assignment called" << std::endl;
 	if (this != &copy)
 	{
 		this->v = copy.v;
+		this->_MaxSize = copy._MaxSize;
 	}
 	return (*this);
 }
@@ -73,17 +76,16 @@ int		Span::shortestSpan()
 
 int		Span::longestSpan()
 {
-	int	longest = *max_element(v.begin(), v.end());
 	int	shortest = *min_element(v.begin(), v.end());
-
+	int	longest = *max_element(v.begin(), v.end());
 
 	return (abs(longest - shortest));
 }
 
 void	Span::addRange(int start, int end)
 {
-	for (int i = start; v.size() < _MaxSize && i <= end; ++i)
-        v.push_back(i);
+	for (int i = start; v.size() <= _MaxSize && i <= end; ++i)
+		v.push_back(i);
 }
 
 void	Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end)
