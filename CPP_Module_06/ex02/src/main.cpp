@@ -11,25 +11,4 @@ int	main(void)
 	identify(base);
 	identify(*base);
 	delete base;
-
-	base = generate();
-	identify(base);
-	identify(*base);
-	delete base;
-	base = generate();
-	identify(base);
-	identify(*base);
-	delete base;
-	base = generate();
-	identify(base);
-	identify(*base);
-	delete base;
-	base = generate();
-	identify(base);
-	identify(*base);
-	delete base;
-	base = generate();
-	identify(base);
-	identify(*base);
-	delete base;
 }

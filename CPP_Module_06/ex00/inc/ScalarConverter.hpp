@@ -5,6 +5,7 @@
 # include <limits>
 # include <sstream>
 # include <iomanip>
+# include <cmath>
 
 class ScalarConverter
 {
@@ -18,7 +19,7 @@ class ScalarConverter
 		~ScalarConverter(void);
 		ScalarConverter &	operator=(ScalarConverter const & rhs);
 
-		static unsigned char	convertChar(std::string str);
+		static char	convertChar(std::string str);
 		static int		convertInt(std::string str);
 		static float	convertFloat(std::string str);
 		static double	convertDouble(std::string str);

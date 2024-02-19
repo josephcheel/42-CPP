@@ -74,16 +74,7 @@ bool	isChar(std::string str)
 
 void	ScalarConverter::convert(std::string str)
 {
-	// std::cout << std::endl << std::fixed << std::numeric_limits<double>::max() << std::endl << std::endl;
-	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::max() << std::endl << std::endl;
-	// std::cout << std::endl << std::fixed << std::numeric_limits<float>::min() << std::endl << std::endl;
-
-	//  double positive_infinity = std::numeric_limits<float>::infinity();
-    // double negative_infinity = -std::numeric_limits<double>::infinity();
-
-    // std::cout << "Positive Infinity: " << positive_infinity << std::endl;
-    // std::cout << "Negative Infinity: " << negative_infinity << std::endl;
-	if (str == "nan" || str == "nanf" || std::isnan(std::atof(str.c_str())))
+	if (str == "nan" || str == "nanf" )
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -123,6 +114,8 @@ void	ScalarConverter::convert(std::string str)
 
 	if (c == 0)
 		std::cout << "char:\t\tNon displayable" << std::endl;
+	else if (c == -1)
+		std::cout << "char:\t\timpossible" << std::endl;
 	else
 		std::cout << "char:\t\t" << c << std::endl;
 	
@@ -142,15 +135,15 @@ void	ScalarConverter::convert(std::string str)
 		std::cout << "double:\t\t" << std::setprecision(1) << std::fixed << d << std::endl;
 }
 
-unsigned char	ScalarConverter::convertChar(std::string str)
+char	ScalarConverter::convertChar(std::string str)
 {
 	if (isChar(str))
 		return (static_cast<char>(str[0]));
-	if (str.length() >= 1  && str.length() <= 3 && isFloat(str) == true )
+	if (str.length() >= 1 && isFloat(str) == true )
 	{
 		double tmp = std::atof(str.c_str());
-		if (tmp > std::numeric_limits<unsigned char>::max())
-			return (0);
+		if (tmp > std::numeric_limits<char>::max() || tmp < 0)
+			return (-1);
 		unsigned char c = static_cast<unsigned char>(tmp);
 		if (std::isprint(c) != 0)
 			return(c);
@@ -184,11 +177,8 @@ float	ScalarConverter::convertFloat(std::string str)
 		
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
-		float tmp = std::atof(str.c_str());
-		
-		// std::cout << tmp << std::endl;
-		if (std::isinf(tmp))
-			return (std::numeric_limits<float>::infinity());
+		double tmp = std::atof(str.c_str());
+
 		if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
 			return (0);
 		return(static_cast<float>(tmp));
@@ -206,7 +196,8 @@ double	ScalarConverter::convertDouble(std::string str)
 		if (str[str.length() - 1] == 'f')
 			str.erase(str.length() - 1, 1);
 		double tmp = std::atof(str.c_str());
-		if (tmp > std::numeric_limits<double>::max() || tmp < -std::numeric_limits<double>::max())
+
+		if (tmp >= std::numeric_limits<double>::max() || tmp < -std::numeric_limits<double>::max())
 			return (0);
 		return(static_cast<double>(std::atof(str.c_str())));
 	}

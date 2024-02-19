@@ -6,6 +6,7 @@
 
 Base * generate(void)
 {
+	srand((int) time(0));
 	int i = std::rand() % 3;
 	if (i == 0)
 		return new A;
