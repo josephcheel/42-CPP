@@ -3,6 +3,7 @@
 #include "../inc/B.hpp"
 #include "../inc/C.hpp"
 #include <iostream>
+#include <cstdlib>
 
 Base * generate(void)
 {
@@ -35,7 +36,7 @@ void identify(Base& p)
 		std::cout << "A" << std::endl;
 		return ;
 	}
-	catch (std::bad_cast)
+	catch (std::exception &e)
 	{
 		std::cout << "Can't cast to A" << std::endl;
 	}
@@ -45,7 +46,7 @@ void identify(Base& p)
 		std::cout << "B" << std::endl;
 		return ;
 	}
-	catch (std::bad_cast)
+	catch (std::exception &e)
 	{
 		std::cout << "Can't cast to B" << std::endl;
 	}
@@ -55,7 +56,7 @@ void identify(Base& p)
 		std::cout << "C" << std::endl;
 		return ;
 	}
-	catch (std::bad_cast)
+	catch (std::exception &e)
 	{
 		std::cout << "Can't cast to C" << std::endl;
 	}
