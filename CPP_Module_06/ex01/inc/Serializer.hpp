@@ -4,6 +4,8 @@
 # include <iostream>
 # include <limits>
 # include <sstream>
+# include <stdint.h>
+
 # include "Data.hpp"
 
 class Data;
