@@ -28,3 +28,40 @@ Data &Data::operator=(Data const & copy)
 	}
 	return (*this);
 }
+
+char	Data::getChar() const
+{
+	return (c);
+}
+int		Data::getInt()  const
+{
+	return (i);
+}
+float	Data::getFloat()  const
+{
+	return (f);
+}
+double	Data::getDouble()  const
+{
+	return (d);
+}
+
+void	Data::setChar(char c)
+{
+	this->c = c;
+}
+
+void	Data::setInt(int i)
+{
+	this->i = i;
+}
+
+void	Data::setFloat(float f)
+{
+	this->f = f;
+}
+
+void	Data::setDouble(double d)
+{
+	this->d = d;
+}

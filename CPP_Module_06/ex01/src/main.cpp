@@ -8,15 +8,15 @@ int	main(void)
 {
 	uintptr_t raw;
 	Data ptr;
-	ptr.c = 42;
-	ptr.i = 42;
-	ptr.f = 42.0f;
-	ptr.d = 42;
+	ptr.setChar(42);
+	ptr.setInt(42);
+	ptr.setFloat(42.0f);
+	ptr.setDouble(42);
 	
 	raw = Serializer::serialize(&ptr);
 	Data *out = Serializer::deserialize(raw);
-	std::cout << out->c << std::endl;
-	std::cout << out->i << std::endl;
-	std::cout << out->f << std::endl;
-	std::cout << out->d << std::endl;		
+	std::cout << out->getChar() << std::endl;
+	std::cout << out->getInt() << std::endl;
+	std::cout << out->getFloat() << std::endl;
+	std::cout << out->getDouble() << std::endl;		
 }
