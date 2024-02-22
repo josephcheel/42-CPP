@@ -83,7 +83,7 @@ void	ScalarConverter::convert(std::string str)
 
     // std::cout << "Positive Infinity: " << positive_infinity << std::endl;
     // std::cout << "Negative Infinity: " << negative_infinity << std::endl;
-	if (str == "nan" || str == "nanf" || std::isnan(std::atof(str.c_str())))
+	if (str == "nan" || str == "nanf")
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -186,9 +186,6 @@ float	ScalarConverter::convertFloat(std::string str)
 			str.erase(str.length() - 1, 1);
 		float tmp = std::atof(str.c_str());
 		
-		// std::cout << tmp << std::endl;
-		if (std::isinf(tmp))
-			return (std::numeric_limits<float>::infinity());
 		if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max())
 			return (0);
 		return(static_cast<float>(tmp));
