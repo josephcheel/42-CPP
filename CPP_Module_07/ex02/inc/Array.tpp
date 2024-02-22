@@ -8,7 +8,7 @@ template <typename T>
 Array<T>::Array()
 {
 	std::cout << "Array constructor called" << std::endl;
-	_array = new T;
+	_array = NULL;
 	_size = 0;
 }
 
@@ -24,7 +24,8 @@ template <typename T>
 Array<T>::~Array()
 {
 	std::cout << "Array destructor called" << std::endl;
-	delete _array;
+	if (_size)
+		delete [] _array;
 }
 
 template <typename T>
@@ -33,7 +34,8 @@ Array<T>&Array<T>::operator=(Array const & rhs)
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &rhs)
 	{
-		delete [] _array;
+		if (_size)
+			delete [] _array;
 		_array = new T[rhs._size];
 		for (size_t i = 0; i < rhs._size; i++)
 			_array[i] = rhs._array[i];
