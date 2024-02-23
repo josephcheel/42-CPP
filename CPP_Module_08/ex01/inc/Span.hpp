@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <vector>
+# include <climits>
+# include <algorithm>
 
 class Span {
 	private:
