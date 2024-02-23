@@ -1,11 +1,17 @@
 #include "../inc/easyfind.tpp"
 #include <iostream>
 #include <vector>
-#include <array>
+#include <list>
 
 int main(void)
 {
-	std::array<int, 5> a = {24, 42, 30, 2, 45};
+	std::list<int> a;
+	a.push_back(24);
+	a.push_back(42);
+	a.push_back(30);
+	a.push_back(2);
+	a.push_back(45);
+	// = {24, 42, 30, 2, 45};
 
 	std::cout << *easyfind(a, 2) << std::endl;
 
