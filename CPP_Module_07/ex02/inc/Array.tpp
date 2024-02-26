@@ -34,14 +34,27 @@ Array<T>&Array<T>::operator=(Array const & rhs)
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &rhs)
 	{
-		if (_size)
-			delete [] _array;
+		delete [] _array;
 		_array = new T[rhs._size];
 		for (size_t i = 0; i < rhs._size; i++)
 			_array[i] = rhs._array[i];
 		_size = rhs._size;
 	}
 	return *this;
+}
+
+template <typename T>
+Array<T>::Array(const Array & copy)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Assignation operator called" << std::endl;
+	if (this != &copy)
+	{
+		_array = new T[copy._size];
+		for (size_t i = 0; i < copy._size; i++)
+			_array[i] = copy._array[i];
+		_size = copy._size;
+	}
 }
 
 template <typename T>
@@ -52,12 +65,6 @@ T& Array<T>::operator[](unsigned int n)
 	return (_array[n]);
 }
 
-template <typename T>
-Array<T>::Array(const Array & copy)
-{
-	std::cout << "Copy constructor called" << std::endl;
-	*this = copy;
-}
 
 template <typename T>
 size_t Array<T>::size()
