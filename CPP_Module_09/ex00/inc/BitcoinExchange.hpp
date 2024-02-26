@@ -2,6 +2,7 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <sstream>
 # include <fstream>
 # include <string>
 #include <vector>
@@ -12,7 +13,6 @@ class BitcoinExchange {
 		std::fstream		dbf;
 		std::fstream		inputf;
 		std::map<std::string, float>	dbMap;
-		std::map<std::string, float>	inputMap;
 	public:
 		BitcoinExchange();
 
@@ -23,14 +23,14 @@ class BitcoinExchange {
 		~BitcoinExchange();
 
 		std::map<std::string, float>	getDataBaseMap() const;
-		std::map<std::string, float>	getInputMap() const;
 		float	getDBValue(const std::string &date) const;
-		float	getInValue(const std::string &date) const;
-
+		
 		bool	opendb();
 		bool	openinput(const std::string &filename);
 		void	chargeDb();
 		void	chargeInput();
+
+		float	find_closest_min_value(std::string date);
 };
 
 #endif

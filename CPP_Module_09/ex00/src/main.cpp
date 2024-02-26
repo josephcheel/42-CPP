@@ -20,11 +20,4 @@ int	main(int ac, char **av)
 	// {
 	// 	 std::cout << it->first << " " << it->second << "\n";
 	// }
-
-	std::map<std::string, float> in = btc.getInputMap();
-	for (std::map<std::string, float>::iterator it = in.begin() ; 
-		it != in.end(); ++it)
-	{
-		 std::cout << it->first << " " << it->second << "\n";
-	}
 }
