@@ -25,6 +25,7 @@ int	main(void)
 	std::cout << "--------------TEST SUBJECT-------------------" << std::endl;
 	{
 		Span sp = Span(5);
+		
 		sp.addNumber(6);
 		sp.addNumber(3);
 		sp.addNumber(17);
@@ -35,15 +36,18 @@ int	main(void)
 	}
 	std::cout << "--------------ADD_RANGE----------------------" << std::endl;
 	{
-		Span sp = Span(10000);
-		sp.addRange(1, 10000);
+		int initialValues[] = {1, 10, 21, 32, 43, 54, 65 ,76 ,87 ,98};
+		size_t size = sizeof(initialValues) / sizeof(initialValues[0]);
+		
+		std::vector<int> sp(initialValues, initialValues + size);
 
+		for (std::vector<int>::iterator it = sp.begin(); it != sp.end(); ++it)
+			std::cout << *it << std::endl;
+		
 		/* AddRange() Method using a range of iterators*/
 		Span sp2 = Span(10000);
-
-		std::vector<int> tmp = sp.getVector();
 		
-		sp2.addRange(tmp.begin() + 2, tmp.end());
+		sp2.addRange(sp.begin(), sp.end());
 		std::cout << sp2.shortestSpan() << std::endl;
 		std::cout << sp2.longestSpan() << std::endl;
 	}
@@ -58,7 +62,7 @@ int	main(void)
 		tmp.push_back(17);
 		tmp.push_back(9);
 		tmp.push_back(11);
-
+	
 		sp2.addRange(tmp.begin(), tmp.end());
 		std::cout << sp2.shortestSpan() << std::endl;
 		std::cout << sp2.longestSpan() << std::endl;

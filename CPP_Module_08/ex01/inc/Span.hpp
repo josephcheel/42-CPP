@@ -5,6 +5,7 @@
 # include <vector>
 # include <climits>
 # include <algorithm>
+# include <cstdlib>
 
 class Span {
 	private:
@@ -22,9 +23,18 @@ class Span {
 		unsigned int		getMaxSize() const;
 		std::vector<int>	getVector() const;
 		void	addNumber(int add);
-		void	addRange(int start, int end);
 		void	addRange(std::vector<int>::iterator start, std::vector<int>::iterator end);
 		int		shortestSpan();
 		int		longestSpan();
+
+	class TooFewElements : public std::exception {
+		public:
+			virtual const char * what() const throw();
+	};
+
+	class TooManyElements : public std::exception {
+		public:
+			virtual const char * what() const throw();
+	};
 };
 #endif

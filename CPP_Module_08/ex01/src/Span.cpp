@@ -47,13 +47,15 @@ void	Span::addNumber(int add)
 	if (v.size() < _MaxSize)
 		v.push_back(add);
 	else
-		throw std::exception();
+		throw TooManyElements();
 }
 
 int		Span::shortestSpan()
 {
 	int	shortest = INT_MAX;
 
+	if (v.size() <= 1)
+		throw TooFewElements();
 	std::sort(v.begin(), v.end());
 	for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
 	{
@@ -76,20 +78,28 @@ int		Span::shortestSpan()
 
 int		Span::longestSpan()
 {
-	int	shortest = *min_element(v.begin(), v.end());
-	int	longest = *max_element(v.begin(), v.end());
+	if (v.size() <= 1)
+		throw TooFewElements();
+	int	shortest = *std::min_element(v.begin(), v.end());
+	int	longest = *std::max_element(v.begin(), v.end());
 
 	return (abs(longest - shortest));
 }
 
-void	Span::addRange(int start, int end)
-{
-	for (int i = start; v.size() <= _MaxSize && i <= end; ++i)
-		v.push_back(i);
-}
-
 void	Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	for (std::vector<int>::iterator it = start; it != end; ++it)
-		this->addNumber(*it);
+	if (v.size() + static_cast<int>(std::distance(start, end)) <= _MaxSize)
+		v.insert(v.end(), start, end);
+	else
+		throw TooManyElements();
+}
+
+const char *Span::TooFewElements::what() const throw()
+{
+	return ("[TooFewElements Exception]");
+}
+
+const char *Span::TooManyElements::what() const throw()
+{
+	return ("[TooManyElements Exception]");
 }
