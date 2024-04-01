@@ -91,19 +91,23 @@ static bool	isDayValid(std::string daystr, std::string monthstr, std::string yea
 	int month = std::atoi(monthstr.c_str());
 	int year = std::atoi(yearstr.c_str());
 
-	if (year > 0)
+	if (year < 0 || month <= 0 || day <= 0 || month > 12)
+		return false;
 	if (day < 1 || day > 31)
 		return false;
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
 			return false;
-	if (month == 2) {
-		// Check for leap year
-		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+	if (month == 2)
+	{
+		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		{
 			if (day > 29)
-			return false;
-		} else {
+				return false;
+		}
+		else
+		{
 			if (day > 28)
-			return false;
+				return false;
 		}
 	}
 	return (true);
@@ -152,24 +156,12 @@ void	BitcoinExchange::chargeInput()
 	std::string	line;
 	float final_value;
 	
-	// while (inputf)
-	// {
-	// }
 	while (std::getline(inputf, line, '\n')) 
 	{
-		// std::string::size_type	firstLetter = line.find_first_not_of(" \t\n");
-		// std::string::size_type	lastLetter = line.find_last_not_of(" \t\n");
-		// line = line.substr(firstLetter);
-		// line = line.substr(0, lastLetter + 1);
-
 		std::string::size_type	Firstpipe = line.find_first_of(" |\n\t");
 		std::string::size_type	Lastpipe = line.find_last_of(" |\n\t");
 		date = line.substr(0, Firstpipe);
 		value = line.substr(Lastpipe + 1, line.length());
-
-		// std::cout << "$LINE: " << line << "$" << std::endl;
-		// std::cout << "$" << date << "$" << std::endl;
-		// std::cout << "$" << value << "$" << std::endl;
 		if (date == "date" && value == "value")
 			continue;
 
@@ -184,22 +176,16 @@ void	BitcoinExchange::chargeInput()
 			continue;
 		}
 
+		if (date.empty())
+			continue ;
 		if (dbMap.find(date) != dbMap.end())
 			final_value = dbMap[date] * std::atof(value.c_str());
 		else
-		{
-			// std::string newDate = find_closest_min_value(date);
-			// while (newDate.length() != 0)
-			// {
-			// 	std::string date = find_closest_min_value(newDate);
-			// }
 			final_value = BitcoinExchange::find_closest_min_value(date) * std::atof(value.c_str());
-		}
 		if (final_value >= 0)
 			std::cout << date << " => " << value << " = " << final_value << std::endl;
 		else if (final_value < 0)
 			std::cout << "Error: not a positive number." << std::endl;
-		// std::cout << std::atof(value.c_str()) << " " << std::numeric_limits<int>::max() << std::endl;
 	}
 	
 }

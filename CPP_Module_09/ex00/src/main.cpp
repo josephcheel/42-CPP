@@ -10,14 +10,5 @@ int	main(int ac, char **av)
 		std::cerr << "Error: could not open file" << std::endl;
 		return 0;
 	}
-	
-
 	BitcoinExchange btc = BitcoinExchange(static_cast<std::string>(av[1]));
-	
-	// std::map<std::string, float> db = btc.getDataBaseMap();
-	// for (std::map<std::string, float>::iterator it = db.begin() ; 
-	// 	it != db.end(); ++it)
-	// {
-	// 	 std::cout << it->first << " " << it->second << "\n";
-	// }
 }
