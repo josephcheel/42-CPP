@@ -47,6 +47,30 @@ static bool isNumber(std::string &str)
 	return true;
 }
 
+static bool check_syntax(std::string _operations)
+{
+	std::stringstream ss(_operations);
+	std::string word;
+	int start = 0;
+	int nbr_of_nbrs = 0;
+
+	while (ss >> word)
+	{
+		if (isNumber(word))
+			nbr_of_nbrs += 1;
+		if (start == 0)
+		{
+			start = 1;
+			continue;
+		}
+		if (nbr_of_nbrs < 2 && word.length() == 1 && (word[0] == '+' || word[0] == '-' || word[0] == '*' || word[0] == '/'))
+			return (false);
+		else if (nbr_of_nbrs >= 2  && word.length() == 1 && (word[0] == '+' || word[0] == '-' || word[0] == '*' || word[0] == '/'))
+			nbr_of_nbrs -= 1;
+	}
+	return (true);
+}
+
 bool	RPN::ReversePolishNotationSyntax()
 {
 	std::stringstream ss(_operations);
@@ -59,10 +83,15 @@ bool	RPN::ReversePolishNotationSyntax()
 			std::cerr << "Error" << std::endl;
 			return (false);
 		}
-	
 	}
 
-	std::stack<int>::size_type nbr_of_nbrs =  _num.size();
+	if (!check_syntax(_operations))
+	{
+		std::cerr << "Error" << std::endl;
+		return (false);
+	}
+
+	std::vector<int>::size_type nbr_of_nbrs =  _num.size();
 	if (nbr_of_nbrs - 1 == _op.size())
 		return (true);
 	else
@@ -70,6 +99,7 @@ bool	RPN::ReversePolishNotationSyntax()
 		std::cerr << "Error" << std::endl;
 		return (false);
 	}
+	
 }
 
 void	RPN::process()
@@ -82,14 +112,14 @@ void	RPN::process()
 	{
 		if (i == 0 || i == 1 || i % 2 != 0)
 		{
-			if (!std::isdigit(word.c_str()[0]))
+			if (!std::isdigit(word.c_str()[0]) && word.length() == 1)
 				_op.push_back(word.c_str()[0]);
 			else
 				_num.push_back(std::atoi(word.c_str()));
 		}
 		else
 		{
-			if (!std::isdigit(word.c_str()[0]))
+			if (!std::isdigit(word.c_str()[0]) && word.length() == 1)
 				_op.push_back(word.c_str()[0]);
 			else
 				_num.push_back(std::atoi(word.c_str()));
@@ -102,7 +132,7 @@ void	RPN::calculate(void)
 {
 	std::stringstream ss(_operations);
 	std::string word;
-	std::vector<int> numbers;
+	std::vector<float> numbers;
 	
 	while (ss >> word)
 	{
@@ -111,9 +141,9 @@ void	RPN::calculate(void)
 			numbers.push_back(std::atoi(word.c_str()));
 			continue;
 		}
-		int nbr1 = numbers.back();
+		float nbr1 = numbers.back();
 		numbers.pop_back();
-		int nbr2 = numbers.back();
+		float nbr2 = numbers.back();
 		numbers.pop_back();
 		if (word.length() == 1 && word[0] == '+')
 			numbers.push_back(nbr2 + nbr1);
