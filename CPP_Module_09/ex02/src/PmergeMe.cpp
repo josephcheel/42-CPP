@@ -60,17 +60,17 @@ void	PmergeMe::mergeInsertSort()
 	
 	/* Stack Merge-Insertion Sort Algorithm */
 	start = clock();
-	 for(int i = 0; i < 1000000; ++i) {
-        // do something
-    } 
+	// for(int i = 0; i < 1000000; ++i) {
+    //     // do something
+    // } 
 	end = clock();
 	this->time_stack = (double)(end - start) / CLOCKS_PER_SEC;
 	
 	/* List Merge-Insertion Sort Algorithm */
 	start = clock();
-	for(int i = 0; i < 1000000; ++i) {
-        // do something
-    } 
+	// for(int i = 0; i < 1000000; ++i) {
+    //     // do something
+    // } 
 	end = clock();
 	this->time_list = (double)(end - start) / CLOCKS_PER_SEC;
 }
@@ -104,6 +104,6 @@ void	PmergeMe::print_result()
 	}
 
 	/* Time of Containers */
-	std::cout << "Time to process a range of " << elem << " elements with std::stack : " << time_stack << " ??" << std::endl;
-	std::cout << "Time to process a range of " << elem << " elements with std::list : " << time_list << " ??" << std::endl;
+	std::cout << "Time to process a range of " << elem << " elements with std::stack\t: " << time_stack << " ??" << std::endl;
+	std::cout << "Time to process a range of " << elem << " elements with std::list\t: " << time_list << " ??" << std::endl;
 }
