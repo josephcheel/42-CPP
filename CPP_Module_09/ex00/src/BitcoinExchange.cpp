@@ -69,9 +69,9 @@ bool	BitcoinExchange::opendb()
 	return (true);
 }
 
-bool	BitcoinExchange::openinput(const std::string &filename)
+bool	BitcoinExchange::openinput(std::string filename)
 {
-	inputf.open(filename, std::ios::in);
+	inputf.open(filename.c_str(), std::ios::in);
 	if (!inputf)
 		return (false);
 	return (true);
@@ -202,7 +202,7 @@ void	BitcoinExchange::chargeDb()
 		dbf >> line;
 		ptr = std::strtok(const_cast<char *>(line.c_str()), ",");
 		date = ptr;
-		ptr = strtok(NULL, ",");
+		ptr = std::strtok(NULL, ",");
 		if (ptr)
 		{
 			value = ptr;

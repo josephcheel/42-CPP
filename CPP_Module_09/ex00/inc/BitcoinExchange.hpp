@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <sstream>
+# include <cstring>
+# include <cstdlib>
 # include <fstream>
 # include <string>
 # include <map>
@@ -25,7 +27,7 @@ class BitcoinExchange {
 		float	getDBValue(const std::string &date) const;
 		
 		bool	opendb();
-		bool	openinput(const std::string &filename);
+		bool	openinput(std::string filename);
 		void	chargeDb();
 		void	chargeInput();
 
