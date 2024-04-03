@@ -82,7 +82,9 @@ void	PmergeMe::print_result()
 	std::cout << "Before:\t";
 	for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it)
 	{
-		if (std::next(it) != lst.end())
+		std::list<int>::iterator next_it = it;
+        ++next_it;
+		if (next_it != lst.end())
 			std::cout << *it << " ";
 		else
 			std::cout << *it << std::endl;
@@ -93,7 +95,9 @@ void	PmergeMe::print_result()
 	ordered_list.sort();
 	for (std::list<int>::iterator it = ordered_list.begin(); it != ordered_list.end(); ++it)
 	{
-		if (std::next(it) != ordered_list.end())
+		std::list<int>::iterator next_it = it;
+        ++next_it;
+		if (next_it != ordered_list.end())
 			std::cout << *it << " ";
 		else
 			std::cout << *it << std::endl;
