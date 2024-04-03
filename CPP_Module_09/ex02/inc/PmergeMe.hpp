@@ -1,7 +1,7 @@
 
 # include <algorithm>
 # include <iostream>
-# include <chrono>
+# include <ctime>
 # include <stack>
 # include <list>
 
@@ -12,9 +12,9 @@ class PmergeMe {
 		std::list<int>		lst;
 		
 		/* General Information */
-		int					elem;
-		std::chrono::microseconds	time_stack;
-		std::chrono::microseconds	time_list;
+		int			elem;
+		double		time_stack;
+		double		time_list;
 	public:
 		PmergeMe();
 		~PmergeMe();

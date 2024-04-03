@@ -55,20 +55,24 @@ void	PmergeMe::initialization(int ac,char **av)
 /* Merge-Insertion Sort Algorithm */
 void	PmergeMe::mergeInsertSort()
 {
-	std::chrono::high_resolution_clock::time_point start;
-	std::chrono::high_resolution_clock::time_point end;
+	clock_t start;
+	clock_t end;
 	
 	/* Stack Merge-Insertion Sort Algorithm */
-	start = std::chrono::high_resolution_clock::now();
-	
-	end = std::chrono::high_resolution_clock::now();
-	this->time_stack = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+	start = clock();
+	 for(int i = 0; i < 1000000; ++i) {
+        // do something
+    } 
+	end = clock();
+	this->time_stack = (double)(end - start) / CLOCKS_PER_SEC;
 	
 	/* List Merge-Insertion Sort Algorithm */
-	start = std::chrono::high_resolution_clock::now();
-	
-	end = std::chrono::high_resolution_clock::now();
-	this->time_list = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+	start = clock();
+	for(int i = 0; i < 1000000; ++i) {
+        // do something
+    } 
+	end = clock();
+	this->time_list = (double)(end - start) / CLOCKS_PER_SEC;
 }
 
 /* Output Results */
@@ -96,6 +100,6 @@ void	PmergeMe::print_result()
 	}
 
 	/* Time of Containers */
-	std::cout << "Time to process a range of " << elem << " elements with std::stack : " << time_stack.count() << " us" << std::endl;
-	std::cout << "Time to process a range of " << elem << " elements with std::list : " << time_list.count() << " us" << std::endl;
+	std::cout << "Time to process a range of " << elem << " elements with std::stack : " << time_stack << " ??" << std::endl;
+	std::cout << "Time to process a range of " << elem << " elements with std::list : " << time_list << " ??" << std::endl;
 }
