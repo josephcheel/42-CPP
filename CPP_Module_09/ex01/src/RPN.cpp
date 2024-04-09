@@ -91,7 +91,7 @@ bool	RPN::ReversePolishNotationSyntax()
 		return (false);
 	}
 
-	std::vector<int>::size_type nbr_of_nbrs =  _num.size();
+	std::stack<int>::size_type nbr_of_nbrs =  _num.size();
 	if (nbr_of_nbrs - 1 == _op.size())
 		return (true);
 	else
@@ -113,16 +113,16 @@ void	RPN::process()
 		if (i == 0 || i == 1 || i % 2 != 0)
 		{
 			if (!std::isdigit(word.c_str()[0]) && word.length() == 1)
-				_op.push_back(word.c_str()[0]);
+				_op.push(word.c_str()[0]);
 			else
-				_num.push_back(std::atoi(word.c_str()));
+				_num.push(std::atoi(word.c_str()));
 		}
 		else
 		{
 			if (!std::isdigit(word.c_str()[0]) && word.length() == 1)
-				_op.push_back(word.c_str()[0]);
+				_op.push(word.c_str()[0]);
 			else
-				_num.push_back(std::atoi(word.c_str()));
+				_num.push(std::atoi(word.c_str()));
 		}
 		i++;
 	}
@@ -132,43 +132,27 @@ void	RPN::calculate(void)
 {
 	std::stringstream ss(_operations);
 	std::string word;
-	std::vector<float> numbers;
+	std::stack<float> numbers;
 	
 	while (ss >> word)
 	{
 		if (isNumber(word))
 		{
-			numbers.push_back(std::atoi(word.c_str()));
+			numbers.push(std::atoi(word.c_str()));
 			continue;
 		}
-		float nbr1 = numbers.back();
-		numbers.pop_back();
-		float nbr2 = numbers.back();
-		numbers.pop_back();
+		float nbr1 = numbers.top();
+		numbers.pop();
+		float nbr2 = numbers.top();
+		numbers.pop();
 		if (word.length() == 1 && word[0] == '+')
-			numbers.push_back(nbr2 + nbr1);
+			numbers.push(nbr2 + nbr1);
 		else if (word.length() == 1 && word[0] == '-')
-			numbers.push_back(nbr2 - nbr1);
+			numbers.push(nbr2 - nbr1);
 		else if (word.length() == 1 && word[0] == '*')
-			numbers.push_back(nbr2 * nbr1);
+			numbers.push(nbr2 * nbr1);
 		else if (word.length() == 1 && word[0] == '/')
-			numbers.push_back(nbr2 / nbr1);
+			numbers.push(nbr2 / nbr1);
 	}
-	std::cout << numbers.back() << std::endl;
-}
-
-void	RPN::printnum()
-{
-	std::cout << "num: ";
-	for (std::vector<int>::size_type i = 0; i < _num.size(); ++i)
-		std::cout << _num[i] << " ";
-	std::cout << "\n";
-}
-
-void	RPN::printop()
-{
-	std::cout << "op: ";
-	for (std::vector<char>::size_type i = 0; i < _op.size(); ++i)
-		std::cout << _op[i] << " ";
-	std::cout << "\n";
+	std::cout << numbers.top() << std::endl;
 }

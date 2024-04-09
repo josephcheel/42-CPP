@@ -3,14 +3,14 @@
 # include <iostream>
 # include <sstream>
 # include <cstdlib>
-# include <vector>
+# include <stack>
 
 class RPN {
 	private:
 		std::string			_operations;
-		std::vector<int>	_num;
-		std::vector<char>	_op;
-		std::vector<int> numbers;
+		std::stack<int>		_num;
+		std::stack<char>	_op;
+		std::stack<int> numbers;
 	public:
 		RPN();
 		RPN(const std::string &operations);
@@ -24,6 +24,4 @@ class RPN {
 		void	process();
 		void	calculate();
 
-		void	printnum();
-		void	printop();
 };
