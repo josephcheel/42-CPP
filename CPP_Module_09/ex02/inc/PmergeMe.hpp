@@ -2,13 +2,13 @@
 # include <algorithm>
 # include <iostream>
 # include <ctime>
-# include <stack>
+# include <vector>
 # include <list>
 
 class PmergeMe {
 	private:
 		/* Containers */
-		std::stack<int>		stack;
+		std::vector<int>		stack;
 		std::list<int>		lst;
 		
 		/* General Information */
@@ -25,4 +25,6 @@ class PmergeMe {
 		void	mergeInsertSort();
 		void	print_result();
 
+		template <typename T>
+		static bool	binary_search(typename T::iterator &begin,typename T::iterator &end, int find);
 };

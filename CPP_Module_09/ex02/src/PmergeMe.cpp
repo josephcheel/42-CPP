@@ -46,7 +46,7 @@ void	PmergeMe::initialization(int ac,char **av)
 {
 	for (int i = 1; i < ac; i++)
 	{
-		this->stack.push(std::atoi(av[i]));
+		this->stack.push_back(std::atoi(av[i]));
 		this->lst.push_back(std::atoi(av[i]));
 	}
 	this->elem = lst.size();
@@ -107,3 +107,11 @@ void	PmergeMe::print_result()
 	std::cout << "Time to process a range of " << elem << " elements with std::stack\t: " << time_stack << " ??" << std::endl;
 	std::cout << "Time to process a range of " << elem << " elements with std::list\t: " << time_list << " ??" << std::endl;
 }
+
+/* Binary_Search */
+template <typename T>
+bool PmergeMe::binary_search(typename T::iterator &begin,typename T::iterator &end, int find)
+{
+
+}
+//std::binary_search(haystack.begin(), haystack.end(), needle)
