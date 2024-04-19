@@ -32,8 +32,8 @@ public:
 	void 	sort();
 	void	print_result();
 
-	template <typename X>
-	bool	binary_search(typename X::iterator &begin,typename X::iterator &end, int find);
+	// template <typename X>
+	// bool	binary_search(typename X::iterator &begin,typename X::iterator &end, int find);
 
 	// template <typename Iterator>
 	// Iterator	ft_lower_bound(Iterator &begin,Iterator &end, int find);

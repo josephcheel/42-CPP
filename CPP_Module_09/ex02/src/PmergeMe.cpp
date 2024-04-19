@@ -61,22 +61,16 @@ void	PmergeMe::sort()
 	clock_t start;
 	clock_t end;
 	
+	
 	/* Stack Merge-Insertion Sort Algorithm */
 	start = clock();
-	// for(int i = 0; i < 1000000; ++i) {
-    //     // do something
-    // }
 	this->mergeInsertSort<std::vector<int> >(this->vector);
-	// MERGEME(vector.begin(), vector.end(), vector);
 	end = clock();
 	this->time_stack = (double)(end - start) / CLOCKS_PER_SEC;
+	
 	/* List Merge-Insertion Sort Algorithm */
 	start = clock();
-	// for(int i = 0; i < 1000000; ++i) {
-    //     // do something
-    // } 
 	this->mergeInsertSort<std::deque<int> >(this->lst);
-	// MERGEME(lst.begin(), lst.end(), lst);
 	end = clock();
 	this->time_list = (double)(end - start) / CLOCKS_PER_SEC;
 }
@@ -97,10 +91,10 @@ void	PmergeMe::print_result()
 	}
 	/* After */
 	std::cout << "After:\t";
-	std::deque<int> ordered_list = lst;
-	for (std::deque<int>::iterator it = ordered_list.begin(); it != ordered_list.end(); ++it)
+	std::vector<int> ordered_list = vector;
+	for (std::vector<int>::iterator it = ordered_list.begin(); it != ordered_list.end(); ++it)
 	{
-		std::deque<int>::iterator next_it = it;
+		std::vector<int>::iterator next_it = it;
         ++next_it;
 		if (next_it != ordered_list.end())
 			std::cout << *it << " ";
@@ -109,8 +103,20 @@ void	PmergeMe::print_result()
 	}
 
 	/* Time of Containers */
-	std::cout << std::fixed << std::setprecision(12) << "Time to process a range of " << elem << " elements with std::stack\t: " << time_stack << " ??" << std::endl;
-	std::cout << std::fixed << std::setprecision(12) <<"Time to process a range of " << elem << " elements with std::deque\t: " << time_list << " ??" << std::endl;
+	std::cout << std::fixed << std::setprecision(12) << "Time to process a range of " << elem << " elements with std::stack\t: " << time_stack << " sec" << std::endl;
+	std::cout << std::fixed << std::setprecision(12) <<"Time to process a range of " << elem << " elements with std::deque\t: " << time_list << " sec" << std::endl;
+}
+
+template<typename ForwardIterator, typename Distance>
+void advanceIterator(ForwardIterator& it, Distance n) {
+    while (n > 0) {
+        ++it;
+        --n;
+    }
+    while (n < 0) {
+        --it;
+        ++n;
+    }
 }
 
 /* Binary_Search */
@@ -119,24 +125,25 @@ void	PmergeMe::print_result()
 /* @param find Number to find */
 /* @returns True if there is another number equal to find, otherwise returns false */
 /* @note list of numbers should be ordered */
-template <typename T>
-bool PmergeMe::binary_search(typename T::iterator &begin,typename T::iterator &end, int find)
+template <typename ForwardIterator, typename T>
+bool binary_search(ForwardIterator &begin, ForwardIterator &end, const T& find)
 {
-	typename T::iterator left = begin;
-	typename T::iterator right = end;
+	ForwardIterator left = begin;
+    ForwardIterator right = end;
 
-	typename T::iterator it = begin;
-	while (left < right)
-	{
-		typename T::iterator mid = left + (std::distance(left, right)) / 2;
-		if (*mid == find)
-			return true;
-		if (*mid > find)
-			right = mid;
-		else
-			left = mid + 1;
-	}
-	return false;
+    while (left < right)
+    {
+        ForwardIterator mid = left;
+        advanceIterator(mid, std::distance(left, right) / 2);
+        
+        if (*mid == find)
+            return true;
+        if (*mid < find)
+            left = mid + 1;
+        else
+            right = mid;
+    }
+    return false;
 }
 
 /* Lower Bound */
@@ -145,26 +152,6 @@ bool PmergeMe::binary_search(typename T::iterator &begin,typename T::iterator &e
 /* @param find Number to find */
 /* @returns The lowest or equal number found on the list */
 /* @note list of numbers should be ordered */
-// template<typename ForwardIterator, typename T>
-// ForwardIterator	ft_lower_bound(ForwardIterator &begin, ForwardIterator &end, T& find)
-// {
-// 	ForwardIterator left = begin;
-// 	ForwardIterator right = end;
-
-// 	ForwardIterator it = begin;
-// 	while (left < begin)
-// 	{
-// 		typename std::iterator_traits<ForwardIterator>::difference_type mid = left + (std::distance(left, right)) / 2;
-// 		if (*mid == find)
-// 			return *mid;
-// 		if (*mid > find)
-// 			right = mid;
-// 		else
-// 			left = mid + 1;
-// 	}
-// 	return left;
-// }
-
 template<typename ForwardIterator, typename T>
 ForwardIterator ft_lower_bound(ForwardIterator begin, ForwardIterator end, const T& find)
 {
@@ -174,10 +161,10 @@ ForwardIterator ft_lower_bound(ForwardIterator begin, ForwardIterator end, const
     while (left < right)
     {
         ForwardIterator mid = left;
-        std::advance(mid, std::distance(left, right) / 2);
+        advanceIterator(mid, std::distance(left, right) / 2);
         
-        if (*mid == find)
-            return mid;
+        // if (*mid == find)
+        //     return mid;
         if (*mid < find)
             left = mid + 1;
         else
@@ -206,7 +193,7 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 	/* Swap Pairs */
 	for (int i = 0; i < static_cast<int>(pairs.size()); i++)
 	{
-		if (i == static_cast<int>(pairs.size()) - 1)
+		if (i == static_cast<int>(pairs.size()) - 1 && i % 2 == 0)
 			continue ;
 		if (i == 0 || (i != 1 && (i % 2 == 0 && i != static_cast<int>(pairs.size()))))
 		{
@@ -216,11 +203,13 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 				swapIterator(it1, it2);
 		}
 	}
-	// std::cout << "PAIRS" << std::endl;
+
+	// std::cout << "Pairs: [" << pairs.size() << "]";
 	// for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
-	// 	std::cout << *it << "\t";
+	// {
+	// 	std::cout << *it << " ";
+	// }
 	// std::cout << std::endl;
-	
 	/* Sort Pairs by the highest number */
 	T main_chain;
 	T pend_chain;
@@ -231,38 +220,64 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 			tmp.push_back(pairs[i]);
 	}
 	std::sort(tmp.begin(), tmp.end());
-
-	// std::cout << "TMP" << std::endl;
+	// std::cout << tmp.size() << std::endl;
 	// for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
-	// 	std::cout << *it << "\t";
-	// std::cout << std::endl;
-
+	// {
+	// 	std::cout << *it << " ";
+	// }
+	std::cout << std::endl;
 	while (!tmp.empty())
 	{
-		while (1)
+	// 	std::cout << "Pairs: [" << pairs.size() << "]";
+	// for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
+	// {
+	// 	std::cout << *it << " ";
+	// }	
+		typename T::iterator found = pairs.end(); //std::find(pairs.begin(), pairs.end(), tmp.front());
+		for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
 		{
-			typename T::iterator found = std::find(pairs.begin(), pairs.end(), tmp.front());
-			if ((found - pairs.begin()) != 0 && (found - pairs.begin()) % 2 != 0 && found != pairs.end())
+			// std::cout << *it << " ";
+			if (((it - pairs.begin()) == 1 || (it - pairs.begin()) % 2 != 0)  && *it == tmp.front() && *it != -1)
 			{
-				if (found - 1 >= pairs.begin())
-				{
-					main_chain.push_back(*found);
-					pend_chain.push_back(*(found - 1));
-					pairs.erase(found);
-					pairs.erase(found - 1);
-				}
+				found = it;
+				break;
 			}
-			else
-				break ;
-			// std::cout << "FOUND" << *found << std::endl;	
+
+		}
+		if (found != pairs.end())
+		{
+			main_chain.push_back(*found);
+			pend_chain.push_back(*(found - 1));
+			pairs[found - pairs.begin()] = -1;
 		}
 		tmp.erase(tmp.begin());
 	}
 	if (!pairs.empty())
 	{
-		pend_chain.push_back(pairs.front());
-		pairs.erase(pairs.begin());
+		std::cout << pairs.back() << std::endl;
+		// for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
+		// {
+			if (pairs.back() != -1)
+			{
+				pend_chain.push_back(pairs.back());
+				// pairs.erase(pairs.e());
+			}
+		// }
 	}
+
+	std::cout << "Main Chain: [" << main_chain.size() << "]";
+	for (typename T::iterator it = main_chain.begin(); it != main_chain.end(); ++it)
+	{
+			std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+	std::cout << "Pend Chain: [" << pend_chain.size() << "]";
+	for (typename T::iterator it = pend_chain.begin(); it != pend_chain.end(); ++it)
+	{
+		std::cout << *it << " ";
+
+	}
+	std::cout << std::endl;
 
 	/* Insertion */
 	main_chain.insert(main_chain.begin(), *pend_chain.begin());
@@ -271,17 +286,16 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 	for (int i = 1; i < static_cast<int>(pend_chain.size()); i++)
 	{	
 		int jac;
-		while ((jac = jacobsthal(i) * 2) <= s)
+		while ((jac = jacobsthal(i) * 2) < s)
 			i++;
 		int index = jac;
 		if (index >= static_cast<int>(pend_chain.size()))
 			index = static_cast<int>(pend_chain.size()) - 1;
 		while (index > 0 &&  index >= s)
 		{
-			// typename T::iterator lower = lower_bound_custom(main_chain.begin(), main_chain.end(), static_cast<int>(pend_chain[index]));
 			typename T::iterator lower;
 			lower = ft_lower_bound(main_chain.begin(), main_chain.end(), static_cast<int>(pend_chain[index]));
-			if (lower != main_chain.end() && pend_chain[index] != -1)
+			if  (pend_chain[index] != -1)
 				main_chain.insert(main_chain.begin() + (lower - main_chain.begin()), pend_chain[index]);
 			else
 				break;
