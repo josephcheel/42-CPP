@@ -1,15 +1,20 @@
-
-# include <algorithm>
+#pragma once
 # include <iostream>
 # include <ctime>
 # include <vector>
 # include <list>
+#include <iostream>
+#include <deque>
+#include <cmath>
+#include <algorithm>
+#include <iterator>
 
 class PmergeMe {
 private:
 	/* Containers */
+	std::vector<int>		unordered;
 	std::vector<int>		vector;
-	std::list<int>		lst;
+	std::deque<int>		lst;
 	
 	/* General Information */
 	int			elem;
@@ -29,8 +34,7 @@ public:
 
 	template <typename X>
 	bool	binary_search(typename X::iterator &begin,typename X::iterator &end, int find);
-	
-	template <typename X>
-	typename X::iterator	lower_bound(typename X::iterator &begin,typename X::iterator &end, int find);
 
+	// template <typename Iterator>
+	// Iterator	ft_lower_bound(Iterator &begin,Iterator &end, int find);
 };
