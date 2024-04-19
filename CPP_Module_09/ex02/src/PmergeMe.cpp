@@ -225,7 +225,7 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 	// {
 	// 	std::cout << *it << " ";
 	// }
-	std::cout << std::endl;
+	// std::cout << std::endl;
 	while (!tmp.empty())
 	{
 	// 	std::cout << "Pairs: [" << pairs.size() << "]";
@@ -254,7 +254,7 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 	}
 	if (!pairs.empty())
 	{
-		std::cout << pairs.back() << std::endl;
+		// std::cout << pairs.back() << std::endl;
 		// for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
 		// {
 			if (pairs.back() != -1)
@@ -265,19 +265,19 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 		// }
 	}
 
-	std::cout << "Main Chain: [" << main_chain.size() << "]";
-	for (typename T::iterator it = main_chain.begin(); it != main_chain.end(); ++it)
-	{
-			std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-	std::cout << "Pend Chain: [" << pend_chain.size() << "]";
-	for (typename T::iterator it = pend_chain.begin(); it != pend_chain.end(); ++it)
-	{
-		std::cout << *it << " ";
+	// std::cout << "Main Chain: [" << main_chain.size() << "]";
+	// for (typename T::iterator it = main_chain.begin(); it != main_chain.end(); ++it)
+	// {
+	// 		std::cout << *it << " ";
+	// }
+	// std::cout << std::endl;
+	// std::cout << "Pend Chain: [" << pend_chain.size() << "]";
+	// for (typename T::iterator it = pend_chain.begin(); it != pend_chain.end(); ++it)
+	// {
+	// 	std::cout << *it << " ";
 
-	}
-	std::cout << std::endl;
+	// }
+	// std::cout << std::endl;
 
 	/* Insertion */
 	main_chain.insert(main_chain.begin(), *pend_chain.begin());
