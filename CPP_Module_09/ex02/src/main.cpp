@@ -1,5 +1,4 @@
 #include "../inc/PmergeMe.hpp"
-# include <array>
 
 int main(int ac, char **av)
 {
