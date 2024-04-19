@@ -11,11 +11,7 @@ int	main(int ac, char **av)
 	RPN instance(static_cast<std::string>(av[1]));
 
 	instance.process();
-	// instance.printnum();
-	// instance.printop();
 	if (!instance.ReversePolishNotationSyntax())
 		return (0);
 	instance.calculate();
-	
-	// RPN::calculate(static_cast<std::string>(av[1]));
 }

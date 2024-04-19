@@ -13,6 +13,5 @@ int main(int ac, char **av)
 		Instance.sort();
 		
 		Instance.print_result();
-
 	}
 }

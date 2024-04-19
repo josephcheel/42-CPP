@@ -1,13 +1,9 @@
 #pragma once
 # include <iostream>
-# include <ctime>
+# include <algorithm>
+# include <iomanip>
 # include <vector>
-# include <list>
-#include <iostream>
-#include <deque>
-#include <cmath>
-#include <algorithm>
-#include <iterator>
+# include <deque>
 
 class PmergeMe {
 private:
@@ -31,10 +27,4 @@ public:
 	void	mergeInsertSort(T &pairs);
 	void 	sort();
 	void	print_result();
-
-	// template <typename X>
-	// bool	binary_search(typename X::iterator &begin,typename X::iterator &end, int find);
-
-	// template <typename Iterator>
-	// Iterator	ft_lower_bound(Iterator &begin,Iterator &end, int find);
 };

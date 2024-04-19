@@ -1,6 +1,4 @@
 # include "../inc/PmergeMe.hpp"
-#include <iomanip>
-#include <limits>
 
 /* Constructor & Destructor */
 PmergeMe::PmergeMe()
@@ -34,7 +32,7 @@ bool	PmergeMe::checker(int ac, char **av)
 {
 	for (int i = 1; i < ac; i++)
 	{
-		if (!isNumber((std::string )av[i]))
+		if (!isNumber((std::string )av[i]) || std::atoi(av[i]) < 0)
 		{
 			std::cerr << "Error" << std::endl;
 			return (false);
@@ -162,9 +160,6 @@ ForwardIterator ft_lower_bound(ForwardIterator begin, ForwardIterator end, const
     {
         ForwardIterator mid = left;
         advanceIterator(mid, std::distance(left, right) / 2);
-        
-        // if (*mid == find)
-        //     return mid;
         if (*mid < find)
             left = mid + 1;
         else
@@ -186,7 +181,7 @@ int jacobsthal(int n) {
     return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
 }
 
-/*  */
+/* Ford-Johnson Merge Inserrtion Algorithm */
 template <typename T>
 void	PmergeMe::mergeInsertSort(T &pairs)
 {
@@ -204,12 +199,6 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 		}
 	}
 
-	// std::cout << "Pairs: [" << pairs.size() << "]";
-	// for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
-	// {
-	// 	std::cout << *it << " ";
-	// }
-	// std::cout << std::endl;
 	/* Sort Pairs by the highest number */
 	T main_chain;
 	T pend_chain;
@@ -220,29 +209,16 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 			tmp.push_back(pairs[i]);
 	}
 	std::sort(tmp.begin(), tmp.end());
-	// std::cout << tmp.size() << std::endl;
-	// for (typename T::iterator it = tmp.begin(); it != tmp.end(); ++it)
-	// {
-	// 	std::cout << *it << " ";
-	// }
-	// std::cout << std::endl;
 	while (!tmp.empty())
 	{
-	// 	std::cout << "Pairs: [" << pairs.size() << "]";
-	// for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
-	// {
-	// 	std::cout << *it << " ";
-	// }	
-		typename T::iterator found = pairs.end(); //std::find(pairs.begin(), pairs.end(), tmp.front());
+		typename T::iterator found = pairs.end();
 		for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
 		{
-			// std::cout << *it << " ";
 			if (((it - pairs.begin()) == 1 || (it - pairs.begin()) % 2 != 0)  && *it == tmp.front() && *it != -1)
 			{
 				found = it;
 				break;
 			}
-
 		}
 		if (found != pairs.end())
 		{
@@ -254,31 +230,10 @@ void	PmergeMe::mergeInsertSort(T &pairs)
 	}
 	if (!pairs.empty())
 	{
-		// std::cout << pairs.back() << std::endl;
-		// for (typename T::iterator it = pairs.begin(); it != pairs.end(); ++it)
-		// {
-			if (pairs.back() != -1)
-			{
-				pend_chain.push_back(pairs.back());
-				// pairs.erase(pairs.e());
-			}
-		// }
+		if (pairs.back() != -1)
+			pend_chain.push_back(pairs.back());
 	}
-
-	// std::cout << "Main Chain: [" << main_chain.size() << "]";
-	// for (typename T::iterator it = main_chain.begin(); it != main_chain.end(); ++it)
-	// {
-	// 		std::cout << *it << " ";
-	// }
-	// std::cout << std::endl;
-	// std::cout << "Pend Chain: [" << pend_chain.size() << "]";
-	// for (typename T::iterator it = pend_chain.begin(); it != pend_chain.end(); ++it)
-	// {
-	// 	std::cout << *it << " ";
-
-	// }
-	// std::cout << std::endl;
-
+	
 	/* Insertion */
 	main_chain.insert(main_chain.begin(), *pend_chain.begin());
 	pend_chain[0] = -1;
