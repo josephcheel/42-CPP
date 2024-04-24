@@ -51,18 +51,12 @@ static bool check_syntax(std::string _operations)
 {
 	std::stringstream ss(_operations);
 	std::string word;
-	int start = 0;
 	int nbr_of_nbrs = 0;
 
 	while (ss >> word)
 	{
 		if (isNumber(word))
 			nbr_of_nbrs += 1;
-		if (start == 0)
-		{
-			start = 1;
-			continue;
-		}
 		if (nbr_of_nbrs < 2 && word.length() == 1 && (word[0] == '+' || word[0] == '-' || word[0] == '*' || word[0] == '/'))
 			return (false);
 		else if (nbr_of_nbrs >= 2  && word.length() == 1 && (word[0] == '+' || word[0] == '-' || word[0] == '*' || word[0] == '/'))
