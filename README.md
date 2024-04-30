@@ -21,6 +21,6 @@
 |  [Module 06](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_06)  | C++ casts                                                                                                       | **100** |
 |  [Module 07](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_07)  | C++ templates                                                                                                   | **100** |
 |  [Module 08](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_08)  | Templated containers, iterators, algorithms                                                                     | **100** |
-|  [Module 09](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_09)  | STL                                                                                                             | **TBD** |
+|  [Module 09](https://github.com/josephcheel/42-CPP/tree/main/CPP_Module_09)  | STL                                                                                                             | **100** |
 
 
